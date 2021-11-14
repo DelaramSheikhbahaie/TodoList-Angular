@@ -8,7 +8,6 @@ import {List} from '../../models/lists'
 export class ListsComponent implements OnInit {
 
   lists:List[];
-  inputListName:string = "";
 
   constructor() { }
 

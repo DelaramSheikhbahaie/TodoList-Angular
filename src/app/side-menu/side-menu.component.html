@@ -1,1 +1,13 @@
-<app-lists></app-lists>
+<div>
+    <form>
+        <input
+            type="text"
+            name="inputListName"
+            placeholder="Enter List Name..."
+            [(ngModel)] = "inputListName"
+        />
+        <input type="submit" value="Create New List"/>
+    </form>
+   <app-lists></app-lists> 
+</div>
+
