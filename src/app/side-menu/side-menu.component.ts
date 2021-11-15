@@ -14,9 +14,8 @@ export class SideMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.service.test ="side menu"
   }
   addList(){
-    console.log(this)
+    // this.service.test = this.inputListName
   }
 }

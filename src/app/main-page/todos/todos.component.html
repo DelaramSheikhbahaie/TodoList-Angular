@@ -1,16 +1,19 @@
-<div>
-    <form (submit)="addTodo()">
-        <input
+<div class="todos-container">
+    <mat-form-field (submit)="addTodo()">
+        <mat-label>Enter todo...</mat-label>
+        <input matInput
             type="text"
             name="inputTodo"
-            placeholder="Enter todo..."
             [(ngModel)] = "inputTodos"
+            autocomplete="off"
         />
-        <input type="submit" value="Add Todo"/>
-    </form>
-    <div *ngFor="let todo of todos; let id = index;">
-		<div>{{ id }}</div>
-		<div (click) = "toggleDone(id)">{{ todo.content }}</div>
-		<button (click) = "deleteTodo(id)">Remove</button>
-	</div>
+    </mat-form-field>
+    <button routerLink="/create-todo" class="add-btn" mat-raised-button>Add Todo</button>
+    <mat-list>
+        <mat-list-item *ngFor="let todo of todos; let id = index;">
+            <div>{{ id }}</div>
+            <div (click) = "toggleDone(id)">{{ todo.content }}</div>
+            <button (click) = "deleteTodo(id)" mat-icon-button color="warn">Remove</button>
+        </mat-list-item>
+    </mat-list>
 </div>

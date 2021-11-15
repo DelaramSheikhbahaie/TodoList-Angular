@@ -19,7 +19,7 @@ export class ListsComponent implements OnInit {
         name :" list1"
       }
     ]
-    this.service.listsArray = this.lists ;
+    // this.service.listsArray = this.lists ;
   }
   deleteList (id:number){
     this.lists = this.lists.filter((list , index)=> index !== id)

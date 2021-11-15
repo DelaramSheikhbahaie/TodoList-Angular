@@ -1,6 +1,15 @@
-.main-page{
-    background-color: plum;
+.mat-sidenav-container{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.mat-sidenav{
+    width: 30%;
+    background-color: #6D07CB;
+    color: white;
+}
+.mat-sidenav-content{
+    width: 100%;
 }

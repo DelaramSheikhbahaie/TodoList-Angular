@@ -1,0 +1,12 @@
+.todos-container{
+    width: 100%;
+}
+.add-btn{
+    background-color: #6D07CB;
+    color: white;
+}
+.mat-list-item{
+    border-bottom: 3px solid #6D07CB;
+}
+.mat-list-item button{
+}
