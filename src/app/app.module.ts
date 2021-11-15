@@ -11,6 +11,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { ListsComponent } from './side-menu/lists/lists.component';
 import { MaterialModule } from './material/material.module';
 import { CreateTodoComponent } from './create-todo/create-todo.component';
+import { SenderService } from './sender.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { CreateTodoComponent } from './create-todo/create-todo.component';
     FormsModule ,
     MaterialModule
   ],
-  providers: [],
+  providers: [SenderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
