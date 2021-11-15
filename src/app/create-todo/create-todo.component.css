@@ -1,0 +1,28 @@
+.create-form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.create-form-box{
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 65%;
+    width: 25%;
+    border-radius: 20px;
+}
+.inputs{
+    border-bottom:.5px solid white !important;
+    background-color: transparent;
+    border:none;
+    color: white;
+    resize: none;
+    outline: none;
+}
+.inputs::placeholder{
+    color: white;
+}

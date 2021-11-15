@@ -1,7 +1,7 @@
 <div>
    <div *ngFor="let list of lists; let id = index;">
         <p>{{list.name}}</p>
-        <button (click)="deleteList(id)">delete list</button>
+        <button mat-button (click)="deleteList(id)">delete list</button>
     </div> 
 </div>
 
