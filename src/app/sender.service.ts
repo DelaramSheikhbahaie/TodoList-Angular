@@ -7,7 +7,7 @@ import { List } from './models/lists';
 })
 export class SenderService {
 
-  private lists = new BehaviorSubject([{name:"from service"}]);
+  private lists = new BehaviorSubject([{name:"Daily Tasks"} , {name:"Compeleted Tasks"}]);
   sharedLists = this.lists.asObservable();
 
   private listID = new BehaviorSubject(-1);

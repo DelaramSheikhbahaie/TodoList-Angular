@@ -3,5 +3,9 @@
 }
 .mat-form-field{
     margin-right: 20px;
-    width: 250px !important;
+    margin-bottom: 30px;
+    width: 70% !important;
 }
+/* .add-btn{
+    width: 30%;
+} */

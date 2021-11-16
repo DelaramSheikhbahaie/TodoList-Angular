@@ -1,5 +1,15 @@
 .mat-list-item{
  color: white;
  border-bottom: 2px solid white;
- width: 250px !important;
+ margin-bottom: 30px;
+ width: 90% !important;
+}
+.edit-btn{
+    margin-left: 0px;
+}
+.delete-btn{
+    margin-left: 20px;
+}
+.mat-list-item p{
+    width: 90%;
 }
