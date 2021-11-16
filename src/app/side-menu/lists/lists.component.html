@@ -2,6 +2,7 @@
    <mat-list-item *ngFor="let list of lists; let id = index;" (click)="openList(id)">
         <p>{{id}}</p>
         <button mat-button (click)="deleteList(id)" mat-icon-button color="warn">delete list</button>
+        <button mat-button (click)="deleteList(id)" mat-icon-button color="accent">Edit list</button>
     </mat-list-item> 
 </mat-list>
 

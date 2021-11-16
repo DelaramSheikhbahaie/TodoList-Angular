@@ -10,7 +10,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ListsComponent } from './side-menu/lists/lists.component';
 import { MaterialModule } from './material/material.module';
-import { CreateTodoComponent } from './create-todo/create-todo.component';
+import { CreateTodoComponent } from './main-page/create-todo/create-todo.component';
 import { SenderService } from './sender.service';
 
 @NgModule({

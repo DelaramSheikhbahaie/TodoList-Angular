@@ -1,12 +1,10 @@
 .create-form-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+    width:100%;
+    background-color: blueviolet;
+    color: white;
 }
 .create-form-box{
-    background-color: blueviolet;
+    
     display: flex;
     flex-direction: column;
     align-items: center;

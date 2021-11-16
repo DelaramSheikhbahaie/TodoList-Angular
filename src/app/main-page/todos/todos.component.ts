@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from 'src/app/models/todos';
+import { SenderService } from 'src/app/sender.service';
 
 @Component({
   selector: 'app-todos',
@@ -11,15 +12,10 @@ export class TodosComponent implements OnInit {
   todos:Todo[];
   inputTodos:string = "";
 
-  constructor() { }
+  constructor(private service:SenderService) { }
 
   ngOnInit(): void {
-    this.todos =[
-      {
-        content :"first todo" ,
-        compeleted : false
-      }
-    ]
+    this.service.sharedTodoList.subscribe(todoList => this.todos = todoList)
   }
 
   toggleDone (id:number){
@@ -31,13 +27,5 @@ export class TodosComponent implements OnInit {
 
   deleteTodo (id:number){
     this.todos = this.todos.filter((todo , index)=> index !== id)
-  }
-
-  addTodo (){
-    this.todos.push({
-      content:this.inputTodos ,
-      compeleted :false
-    })
-    this.inputTodos = "";
   }
 }

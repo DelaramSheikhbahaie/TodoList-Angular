@@ -5,6 +5,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input'
 import {MatListModule} from '@angular/material/list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 const materialComponent =[
   MatButtonModule ,
@@ -12,7 +13,8 @@ const materialComponent =[
   MatSidenavModule ,
   MatFormFieldModule ,
   MatInputModule ,
-  MatListModule
+  MatListModule,
+  MatDatepickerModule
 ]
 
 @NgModule({
