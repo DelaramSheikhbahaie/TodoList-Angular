@@ -9,13 +9,12 @@ import { SenderService } from '../sender.service';
 export class SideMenuComponent implements OnInit {
   
   inputListName:string = "";
-  service :SenderService ;
 
-  constructor() { }
+  constructor(private service : SenderService) { }
 
   ngOnInit(): void {
   }
   addList(){
-    // this.service.test = this.inputListName
+    this.service.updateList([{name:'this.inputListName'}])
   }
 }

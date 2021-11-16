@@ -9,17 +9,11 @@ import {List} from '../../models/lists'
 export class ListsComponent implements OnInit {
 
   lists:List[];
-  service :SenderService
 
-  constructor() { }
+  constructor(private service:SenderService) { }
 
   ngOnInit(): void {
-    this.lists = [
-      {
-        name :" list1"
-      }
-    ]
-    // this.service.listsArray = this.lists ;
+    this.service.sharedLists.subscribe(list => this.lists = list)
   }
   deleteList (id:number){
     this.lists = this.lists.filter((list , index)=> index !== id)

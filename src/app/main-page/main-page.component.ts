@@ -8,9 +8,15 @@ import { SenderService } from '../sender.service';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  message:string;
+
+  constructor(private service : SenderService) { }
 
   ngOnInit(): void {
+    this.service.sharedMessage.subscribe(message => this.message=message)
+  }
+  newMessage() {
+    this.service.nextMessage("Second Message")
   }
 
 }
