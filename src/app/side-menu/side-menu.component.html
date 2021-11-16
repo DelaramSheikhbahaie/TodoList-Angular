@@ -1,14 +1,15 @@
-<div>
+<div class="sidenav-container">
     <h1>Other Lists</h1>
-    <form (submit)="addList()">
-        <input
+    <mat-form-field>
+        <mat-label>List Name...</mat-label>
+        <input matInput
             type="text"
             name="inputListName"
-            placeholder="Enter List Name..."
             [(ngModel)] = "inputListName"
+            autocomplete="off"
         />
-        <input type="submit" value="Create New List"/>
-    </form>
+    </mat-form-field>
+    <button routerLink="/create-todo" class="add-btn" (click)="addList()" mat-raised-button>Create New List</button>
    <app-lists></app-lists> 
 </div>
 

@@ -13,3 +13,8 @@
 .mat-sidenav-content{
     width: 100%;
 }
+@media only screen and (max-width: 840px){
+    .mat-sidenav{
+        width: 100%;
+    }
+}
