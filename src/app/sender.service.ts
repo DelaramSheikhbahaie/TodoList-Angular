@@ -7,16 +7,16 @@ import { List } from './models/lists';
 })
 export class SenderService {
 
-  private message = new BehaviorSubject('First Message');
-  sharedMessage = this.message.asObservable();
-
   private lists = new BehaviorSubject([{name:"from service"}]);
   sharedLists = this.lists.asObservable();
 
+  private listID = new BehaviorSubject(-1);
+  sharedListID = this.listID.asObservable();
+
   constructor() { }
 
-  nextMessage(message: string) {
-    this.message.next(message)
+  nextListID(id: number) {
+    this.listID.next(id)
   }
   updateList(list) {
     const currentValue = this.lists.value;
