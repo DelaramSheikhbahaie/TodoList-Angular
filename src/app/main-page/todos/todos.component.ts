@@ -11,11 +11,13 @@ export class TodosComponent implements OnInit {
 
   todos:Todo[];
   inputTodos:string = "";
+  listID:number;
 
   constructor(private service:SenderService) { }
 
   ngOnInit(): void {
     this.service.sharedTodoList.subscribe(todoList => this.todos = todoList)
+    this.service.sharedListID.subscribe(id => this.listID = id)
   }
 
   toggleDone (id:number){

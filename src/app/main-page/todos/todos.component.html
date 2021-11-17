@@ -6,7 +6,12 @@
             <p class="todo-content">{{ todo.content}} :</p>
             <p class="todo-description">{{ todo.description}}</p>
             <button class="done-btn" mat-icon-button>Done</button>
-            <button class="edit-btn" mat-icon-button color="accent">Edit</button>
+             <p *ngIf="listID !== 1"> <!--id 1 => done Tasks -->
+                <button class="edit-btn" mat-icon-button color="accent">Edit</button>
+            </p>
+            <p *ngIf="listID !== 0"><!--id 0 => daily Tasks -->
+                <button class="edit-btn" mat-icon-button>Move To Daily Tasks</button> 
+            </p>
             <button class="remove-btn" (click) = "deleteTodo(id)" mat-icon-button color="warn">Remove</button>
         </mat-list-item>
     </mat-list>
