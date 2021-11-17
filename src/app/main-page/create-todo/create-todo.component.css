@@ -2,9 +2,19 @@
     width:100%;
     background-color:#6D07CB;
     color: white;
+    padding: 15px 0;
+}
+.title{
+    text-align: center;
+}
+.input-field-container{
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: auto;
 }
 .create-form-box{
-    
     display: flex;
     flex-direction: column;
     align-items: center;

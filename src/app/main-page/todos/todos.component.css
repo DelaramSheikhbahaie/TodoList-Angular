@@ -8,21 +8,28 @@
 .mat-list-item{
     border-bottom: 3px solid #6D07CB;
     width: 100%;
+    position: relative;
+}
+.todos-buttons{
+    display: flex !important;
+    position: absolute;
+    left: 90%;
 }
 .todo-content{
     margin: 0 15px 0 15px;
     font-weight: bold;
+    width: fit-content;
 }
 .todo-description{
     margin: 0;
+    /* width: 80%; */
 }
 .done-btn{
-    margin:0 10px 0 77%;
+    margin:0 10px 0 0;
     color: green;
 }
 .edit-btn{
-    margin-right: 10px;
-    
+    margin:0 10px 0 0;
 }
 .remove-btn{
     
