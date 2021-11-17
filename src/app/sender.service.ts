@@ -10,10 +10,10 @@ export class SenderService {
   private lists = new BehaviorSubject([{name:"Daily Tasks"} , {name:"Compeleted Tasks"}]);
   sharedLists = this.lists.asObservable();
 
-  private listID = new BehaviorSubject(-1);
+  private listID = new BehaviorSubject(0);
   sharedListID = this.listID.asObservable();
 
-  private TodoList = new BehaviorSubject([{listId:-1 , content:"from service" , date:"1.1.1" , description:"this is a todo" , compeleted:false}]);
+  private TodoList = new BehaviorSubject([{listId:0 , content:"from service" , date:"1.1.1" , description:"this is a todo" , compeleted:false}]);
   sharedTodoList = this.TodoList.asObservable();
 
   // private todoName = new BehaviorSubject("")
