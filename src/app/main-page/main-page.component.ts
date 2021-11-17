@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SenderService } from '../sender.service';
+import { SenderService } from '../services/sender.service';
 
 @Component({
   selector: 'app-main-page',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from 'src/app/models/todos';
-import { SenderService } from 'src/app/sender.service';
+import { SenderService } from 'src/app/services/sender.service';
 
 @Component({
   selector: 'app-todos',

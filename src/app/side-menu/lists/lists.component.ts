@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SenderService } from 'src/app/sender.service';
+import { SenderService } from 'src/app/services/sender.service';
 import {List} from '../../models/lists'
 @Component({
   selector: 'app-lists',
