@@ -15,7 +15,10 @@ export class SideMenuComponent implements OnInit {
   ngOnInit(): void {
   }
   addList(){
-    this.service.updateList({name:this.inputListName})
-    this.inputListName = "";
+    if(this.inputListName !== ""){
+      this.service.updateList({name:this.inputListName})
+      this.inputListName = "";
+    }
+    
   }
 }

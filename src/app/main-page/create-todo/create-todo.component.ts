@@ -11,20 +11,28 @@ export class CreateTodoComponent implements OnInit {
   contentInput:String;
   dateInput:String;
   descriptionInput:String;
+  listId:number;
 
   constructor(private service:SenderService) { }
 
   ngOnInit(): void {
+    this.service.sharedListID.subscribe(id => this.listId =id)
   }
 
   addTodo(){
-    this.service.updateTodoList(
+    if(this.contentInput !== "" ){
+      // && this.dateInput !== "" && this.descriptionInput !== ""
+      this.service.updateTodoList(
       {
-        listId : 1 ,
+        listId : this.listId ,
         content:this.contentInput ,
         date:"this.dateInput" ,
-        descriptopn:this.descriptionInput,
+        descriptopn:"this.descriptionInput",
         compeleted:false
       })
+      this.contentInput="";
+      this.dateInput="";
+      this.descriptionInput=""
+    }
   }
 }

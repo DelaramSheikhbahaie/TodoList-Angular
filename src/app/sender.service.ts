@@ -38,7 +38,7 @@ export class SenderService {
   updateTodoList(todoList) {
     const currentValue = this.TodoList.value;
     const updatedValue = [...currentValue, todoList];
-    this.lists.next(updatedValue);
+    this.TodoList.next(updatedValue);
   }
   
   // public listsArray:List[];
