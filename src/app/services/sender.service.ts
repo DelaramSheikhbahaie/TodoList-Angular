@@ -13,6 +13,9 @@ export class SenderService {
   private listID = new BehaviorSubject(0);
   sharedListID = this.listID.asObservable();
 
+  private listName = new BehaviorSubject("Daily Tasks");
+  sharedListName = this.listName.asObservable();
+
   private TodoList = new BehaviorSubject([{listId:0 , content:"from service" , date:"1.1.1" , description:"this is a todo" , compeleted:false}]);
   sharedTodoList = this.TodoList.asObservable();
 
@@ -27,8 +30,9 @@ export class SenderService {
 
   constructor() { }
 
-  nextListID(id: number) {
-    this.listID.next(id)
+  nextListInfo(id: number , name:string) {
+    this.listID.next(id);
+    this.listName.next(name);
   }
   updateList(list) {
     const currentValue = this.lists.value;

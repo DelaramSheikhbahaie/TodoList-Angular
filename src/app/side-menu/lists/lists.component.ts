@@ -21,8 +21,8 @@ export class ListsComponent implements OnInit {
   // editName (name:string){
 
   // }
-  openList(id:number){
-    this.service.nextListID(id)
+  openList(id:number , name:string){
+    this.service.nextListInfo(id , name)
   }
 
 }
