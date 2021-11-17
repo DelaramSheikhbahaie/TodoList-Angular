@@ -1,6 +1,6 @@
 .create-form-container{
     width:100%;
-    background-color:#6D07CB;
+    /* background-color:#6D07CB; */
     color: white;
     padding: 15px 0;
 }
@@ -27,7 +27,7 @@
     border-bottom:.5px solid white !important;
     background-color: transparent;
     border:none;
-    color: white;
+    color: white !important;
     resize: none;
     outline: none;
 }
