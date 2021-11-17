@@ -1,10 +1,13 @@
 <div class="todos-container">
     <!-- <button routerLink="/create-todo" class="add-btn" mat-raised-button>Add Todo</button> -->
     <mat-list>
-        <mat-list-item *ngFor="let todo of todos; let id = index;">
-            <div>{{ id }}</div>
-            <div (click) = "toggleDone(id)">{{ todo.content }}</div>
-            <button (click) = "deleteTodo(id)" mat-icon-button color="warn">Remove</button>
+        <mat-list-item *ngFor="let todo of todos; let id = index;"(click) = "toggleDone(id)">
+            <div>{{ id+1 }}</div>
+            <p class="todo-content">{{ todo.content}} :</p>
+            <p class="todo-description">{{ todo.description}}</p>
+            <button class="done-btn" mat-icon-button>Done</button>
+            <button class="edit-btn" mat-icon-button color="accent">Edit</button>
+            <button class="remove-btn" (click) = "deleteTodo(id)" mat-icon-button color="warn">Remove</button>
         </mat-list-item>
     </mat-list>
 </div>

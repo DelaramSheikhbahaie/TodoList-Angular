@@ -27,7 +27,7 @@ export class CreateTodoComponent implements OnInit {
         listId : this.listId ,
         content:this.contentInput ,
         date:"this.dateInput" ,
-        descriptopn:"this.descriptionInput",
+        description:this.descriptionInput,
         compeleted:false
       })
       this.contentInput="";

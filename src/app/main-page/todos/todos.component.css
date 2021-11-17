@@ -7,6 +7,25 @@
 }
 .mat-list-item{
     border-bottom: 3px solid #6D07CB;
+    width: 100%;
+}
+.todo-content{
+    margin: 0 15px 0 15px;
+    font-weight: bold;
+}
+.todo-description{
+    margin: 0;
+}
+.done-btn{
+    margin:0 10px 0 77%;
+    color: green;
+}
+.edit-btn{
+    margin-right: 10px;
+    
+}
+.remove-btn{
+    
 }
 .mat-list-item button{
 }
