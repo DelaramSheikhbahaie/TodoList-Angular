@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Todo } from 'src/app/models/todos';
 import { SenderService } from 'src/app/services/sender.service';
 import { TasksDataService } from 'src/app/services/tasks-data.service';
+import { ElementRef, ViewChild } from '@angular/core';
 // import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
@@ -19,6 +20,7 @@ export class TodosComponent implements OnInit {
   contentEditInput:String;
   dateEditInput:String;
   descriptionEditInput:String;
+  element: HTMLElement;
 
   constructor(
      private service:SenderService ,
@@ -48,7 +50,10 @@ export class TodosComponent implements OnInit {
     this.todos = this.todos.filter((todo , index)=> index !== id)
   }
 
-  editTodo(id:number){
+  updateTodo(id:number){
+    // this.element = document.getElementById("") as HTMLElement;
+    // console.log(this.element)
+    // this.element.style.display = "none"
     this.todoEditMode= !this.todoEditMode;
     if(this.todoEditMode){
       // var formData: any = new FormData();

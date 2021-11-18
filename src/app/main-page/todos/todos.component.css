@@ -8,6 +8,7 @@
 .mat-list-item{
     border-bottom: 3px solid #6D07CB;
     width: 100%;
+    margin-bottom: 15px;
 }
 .todos-container{
     width: 100%;

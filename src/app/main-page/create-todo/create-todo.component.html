@@ -2,11 +2,20 @@
         <div class="input-field-container">
             <h3 class="title">Add a new task to {{listName}} list :</h3>
             <mat-form-field>
-                <mat-label>Enter todo...</mat-label>
+                <mat-label>Enter Title...</mat-label>
                 <input matInput
                     type="text"
                     name="contentInput"
                     [(ngModel)] = "contentInput"
+                    autocomplete="off"
+                />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Enter Description...</mat-label>
+                <input matInput
+                    type="text"
+                    name="descriptionInput"
+                    [(ngModel)] = "descriptionInput"
                     autocomplete="off"
                 />
             </mat-form-field>
@@ -15,15 +24,6 @@
                <input matInput [matDatepicker]="picker" [(ngModel)] = "dateInput"> 
                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Description</mat-label>
-                <input matInput
-                    type="text"
-                    name="descriptionInput"
-                    [(ngModel)] = "descriptionInput"
-                    autocomplete="off"
-                />
             </mat-form-field>
             <button class="add-btn" (click)="addTodo()" mat-fab color="Basic">Add</button>
         </div>

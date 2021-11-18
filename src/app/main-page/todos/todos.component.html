@@ -1,17 +1,17 @@
-<div>
-    <!-- <button routerLink="/create-todo" class="add-btn" mat-raised-button>Add Todo</button> -->
+<!-- <button routerLink="/create-todo" class="add-btn" mat-raised-button>Add Todo</button> -->
     <mat-list>
-        <mat-list-item *ngFor="let todo of todos; let id = index;"(click) = "toggleDone(id)" class="mat-list-item">
+        <mat-list-item *ngFor="let todo of todos; let id = index ;" (click) = "toggleDone(id)" class="mat-list-item">
             <div class="todos-container">
                 <div class="todos-info">
                     <span>
                         <em class="todos-number">{{ id+1 }}</em>
-                        <strong>Title : </strong>
+                        <strong >Title : </strong>
                         <p *ngIf="todoEditMode == false">{{ todo.content}}</p>
                         <input *ngIf="todoEditMode == true" 
                                 class="todos-edit-input"
                                 value="{{todo.content}}"
-                                (keydown.enter) = "editTodo(id)"
+                                (keydown.enter) = "updateTodo(id)"
+                                
                         />
                     </span>
                     <span>
@@ -20,7 +20,8 @@
                         <input *ngIf="todoEditMode == true" 
                                 class="todos-edit-input"
                                 value="{{ todo.description}}"
-                                (keydown.enter) = "editTodo(id)"
+                                (keydown.enter) = "updateTodo(id)"
+                                
                         />
                     </span>
                     <span>
@@ -29,14 +30,14 @@
                         <input *ngIf="todoEditMode == true" 
                                 class="todos-edit-input"
                                 value="{{ todo.date}}"
-                                (keydown.enter) = "editTodo(id)"
+                                (keydown.enter) = "updateTodo(id)"
                         />
                     </span>
                 </div>
                 <div class="todos-buttons">
                     <button class="done-btn" mat-icon-button>Done</button>
                     <p *ngIf="listID !== 1" class="edit-btn"><!--id 1 => done Tasks -->
-                        <button mat-icon-button color="accent" (click) = "editTodo(id)">Edit</button>
+                        <button mat-icon-button color="accent" (click) = "updateTodo(id)">Edit</button>
                     </p>
                     <p *ngIf="listID !== 0"><!--id 0 => daily Tasks -->
                         <button class="edit-btn" mat-icon-button>Move To Daily Tasks</button> 
@@ -46,4 +47,3 @@
             </div>
         </mat-list-item>
     </mat-list>
-</div> 

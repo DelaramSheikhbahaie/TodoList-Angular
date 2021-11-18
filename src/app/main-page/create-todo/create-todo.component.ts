@@ -30,7 +30,7 @@ export class CreateTodoComponent implements OnInit {
         content:this.contentInput ,
         date:this.dateInput ,
         description:this.descriptionInput,
-        compeleted:false
+        compeleted:false ,
       })
       // console.log(this.dateInput.slice(3,11))
       this.contentInput="";
