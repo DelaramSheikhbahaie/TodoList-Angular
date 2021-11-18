@@ -1,8 +1,8 @@
 .create-form-container{
     width:100%;
     /* background-color:#6D07CB; */
-    color: white;
-    padding: 15px 0;
+    color: black;
+    padding: 15px 0 15px 4px ;
 }
 .title{
     text-align: center;
@@ -11,7 +11,7 @@
     padding: 15px 0;
     display: flex;
     justify-content: space-between;
-    width: 70%;
+    width: 96%;
     margin: auto;
 }
 .create-form-box{

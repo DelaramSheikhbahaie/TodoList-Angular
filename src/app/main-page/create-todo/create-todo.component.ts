@@ -12,11 +12,13 @@ export class CreateTodoComponent implements OnInit {
   dateInput:String;
   descriptionInput:String;
   listId:number;
+  listName:string
 
   constructor(private service:SenderService) { }
 
   ngOnInit(): void {
     this.service.sharedListID.subscribe(id => this.listId =id)
+    this.service.sharedListName.subscribe(name => this.listName = name)
   }
 
   addTodo(){
