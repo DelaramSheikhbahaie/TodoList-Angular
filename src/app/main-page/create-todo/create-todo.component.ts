@@ -28,10 +28,11 @@ export class CreateTodoComponent implements OnInit {
       {
         listId : this.listId ,
         content:this.contentInput ,
-        date:"this.dateInput" ,
+        date:this.dateInput ,
         description:this.descriptionInput,
         compeleted:false
       })
+      // console.log(this.dateInput.slice(3,11))
       this.contentInput="";
       this.dateInput="";
       this.descriptionInput=""

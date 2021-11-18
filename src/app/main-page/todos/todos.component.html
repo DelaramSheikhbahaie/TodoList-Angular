@@ -5,17 +5,17 @@
             <div>{{ id+1 }}</div>
             <p class="todo-content">{{ todo.content}}</p>
             <p class="todo-description">: {{ todo.description}}</p>
+            <p class="todo-date">date: {{ todo.date}}</p>
             <div class="todos-buttons">
                 <button class="done-btn" mat-icon-button>Done</button>
-                <p *ngIf="listID !== 1" class="edit-btn"> <!--id 1 => done Tasks -->
+                <p *ngIf="listID !== 1" class="edit-btn"><!--id 1 => done Tasks -->
                     <button mat-icon-button color="accent">Edit</button>
                 </p>
                 <p *ngIf="listID !== 0"><!--id 0 => daily Tasks -->
-                    <button class="edit-btn" mat-icon-button>Move To Daily Tasks</button> 
+                    <button class="edit-btn" (click) = "editTodo(id)" mat-icon-button>Move To Daily Tasks</button> 
                 </p>
                 <button class="remove-btn" (click) = "deleteTodo(id)" mat-icon-button color="warn">Remove</button>
             </div>
-            
         </mat-list-item>
     </mat-list>
-</div>
+</div> 
