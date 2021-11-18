@@ -1,20 +1,48 @@
-<div class="todos-container">
+<div>
     <!-- <button routerLink="/create-todo" class="add-btn" mat-raised-button>Add Todo</button> -->
     <mat-list>
         <mat-list-item *ngFor="let todo of todos; let id = index;"(click) = "toggleDone(id)" class="mat-list-item">
-            <div>{{ id+1 }}</div>
-            <p class="todo-content">{{ todo.content}}</p>
-            <p class="todo-description">: {{ todo.description}}</p>
-            <p class="todo-date">date: {{ todo.date}}</p>
-            <div class="todos-buttons">
-                <button class="done-btn" mat-icon-button>Done</button>
-                <p *ngIf="listID !== 1" class="edit-btn"><!--id 1 => done Tasks -->
-                    <button mat-icon-button color="accent">Edit</button>
-                </p>
-                <p *ngIf="listID !== 0"><!--id 0 => daily Tasks -->
-                    <button class="edit-btn" (click) = "editTodo(id)" mat-icon-button>Move To Daily Tasks</button> 
-                </p>
-                <button class="remove-btn" (click) = "deleteTodo(id)" mat-icon-button color="warn">Remove</button>
+            <div class="todos-container">
+                <div class="todos-info">
+                    <span>
+                        <em class="todos-number">{{ id+1 }}</em>
+                        <strong>Title : </strong>
+                        <p *ngIf="todoEditMode == false">{{ todo.content}}</p>
+                        <input *ngIf="todoEditMode == true" 
+                                class="todos-edit-input"
+                                value="{{todo.content}}"
+                                (keydown.enter) = "editTodo(id)"
+                        />
+                    </span>
+                    <span>
+                        <strong>Description : </strong>
+                        <p *ngIf="todoEditMode == false">{{ todo.description}}</p>
+                        <input *ngIf="todoEditMode == true" 
+                                class="todos-edit-input"
+                                value="{{ todo.description}}"
+                                (keydown.enter) = "editTodo(id)"
+                        />
+                    </span>
+                    <span>
+                        <strong>Date : </strong>
+                        <p *ngIf="todoEditMode == false">{{ todo.date}}</p>
+                        <input *ngIf="todoEditMode == true" 
+                                class="todos-edit-input"
+                                value="{{ todo.date}}"
+                                (keydown.enter) = "editTodo(id)"
+                        />
+                    </span>
+                </div>
+                <div class="todos-buttons">
+                    <button class="done-btn" mat-icon-button>Done</button>
+                    <p *ngIf="listID !== 1" class="edit-btn"><!--id 1 => done Tasks -->
+                        <button mat-icon-button color="accent" (click) = "editTodo(id)">Edit</button>
+                    </p>
+                    <p *ngIf="listID !== 0"><!--id 0 => daily Tasks -->
+                        <button class="edit-btn" mat-icon-button>Move To Daily Tasks</button> 
+                    </p>
+                    <button class="remove-btn" (click) = "deleteTodo(id)" mat-icon-button color="warn">Remove</button>
+                </div>
             </div>
         </mat-list-item>
     </mat-list>

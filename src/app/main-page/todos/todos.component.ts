@@ -14,7 +14,7 @@ export class TodosComponent implements OnInit {
   todos:Todo[];
   inputTodos:string = "";
   listID:number;
-  todoEditMode:boolean;
+  todoEditMode:boolean = false;
   // form: FormGroup;
   contentEditInput:String;
   dateEditInput:String;
@@ -49,11 +49,14 @@ export class TodosComponent implements OnInit {
   }
 
   editTodo(id:number){
-    // var formData: any = new FormData();
-    // formData.append("content", this.form.get('content').value);
-    // formData.append("date", this.form.get('date').value);
-    // formData.append("description", this.form.get('description').value);
-    this.todoEditMode = true;
-    // this.apiService.updateTodos(id . formData)
+    this.todoEditMode= !this.todoEditMode;
+    if(this.todoEditMode){
+      // var formData: any = new FormData();
+      // formData.append("content", this.form.get('content').value);
+      // formData.append("date", this.form.get('date').value);
+      // formData.append("description", this.form.get('description').value);
+      // this.apiService.updateTodos(id . formData)
+    }
+    
   }
 }

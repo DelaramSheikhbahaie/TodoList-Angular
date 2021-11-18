@@ -8,25 +8,38 @@
 .mat-list-item{
     border-bottom: 3px solid #6D07CB;
     width: 100%;
-    position: relative;
+}
+.todos-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.todos-number{
+    margin-right: 15px;
+}
+.todos-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+}
+.todos-info span{
+    display: flex;
+    align-items: center;
+}
+.todos-info span p{
+    margin: 0 0 0 5px;
+}
+.todos-edit-input{
+    margin: 0 0 0 5px;
+    border: .5px solid #6D07CB;
+    border-radius: 10px;
+    padding:5px;
+    outline: none;
 }
 .todos-buttons{
     display: flex !important;
-    position: absolute;
-    left: 90%;
-}
-.todo-content{
-    margin: 0 15px 0 15px;
-    font-weight: bold;
-    width: fit-content;
-}
-.todo-description{
-    margin: 0;
-    /* width: 80%; */
-}
-.todo-date{
-    margin: 0  0 0 30px;
-    font-weight: 500;
+    margin-right: 15px;
 }
 .done-btn{
     margin:0 10px 0 0;
@@ -37,6 +50,4 @@
 }
 .remove-btn{
     
-}
-.mat-list-item button{
 }
