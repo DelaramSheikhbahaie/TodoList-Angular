@@ -33,14 +33,19 @@
                     </span>
                 </div>
                 <div class="todos-buttons">
-                    <button class="done-btn" mat-icon-button>Done</button>
-                    <p *ngIf="listID !== 1" class="edit-btn"><!--id 1 => done Tasks -->
-                        <button mat-icon-button color="accent" (click) = "editTodo(id)">Edit</button>
-                    </p>
-                    <p *ngIf="todo.isMain == false"><!--id 0 => daily Tasks -->
-                        <button class="edit-btn" (click) ="moveToDailyList(todo)" mat-icon-button>Move</button> 
-                    </p>
-                    <button class="remove-btn" (click) = "deleteTodo(id)" mat-icon-button color="warn">Remove</button>
+                    
+                    <button *ngIf="todo.isMain == false" class="edit-btn" (click) ="moveToDailyList(todo)" mat-icon-button>
+                        <mat-icon>transit_enterexit</mat-icon>
+                    </button>
+                    <button class="done-btn" mat-icon-button>
+                        <mat-icon>done_all</mat-icon>
+                    </button>
+                    <button *ngIf="listID !== 1" class="edit-btn" mat-icon-button (click) = "editTodo(id)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="remove-btn" (click) = "deleteTodo(id)" color="warn">
+                        <mat-icon>delete</mat-icon>
+                    </button>
                 </div>
             </div>
         </mat-list-item>
