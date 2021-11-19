@@ -1,11 +1,12 @@
 <mat-list>
-   <mat-list-item *ngFor="let list of lists; let id = index;" (click)="openList(id , list.name)">
-        <p>{{list.name}}</p>
+   <mat-list-item *ngFor="let list of lists; let id = index;" (click)="openList(id , list.title)">
+    <a [routerLink]="[['/list'] , id]">
+        <p>{{list.title}}</p>
         <p *ngIf="id !== 0">
             <button class="edit-btn" mat-button mat-icon-button color="accent">Edit list</button>
             <button class="delete-btn" mat-button (click)="deleteList(id)" mat-icon-button color="warn">delete list</button>
         </p>
-        
-    </mat-list-item> 
+    </a>
+    </mat-list-item>
 </mat-list>
 

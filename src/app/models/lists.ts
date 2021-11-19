@@ -1,5 +1,5 @@
 export class List {
-    title:String;
-    date:String;
+    title:string;
+    date:string;
     isMain:Boolean;
 }

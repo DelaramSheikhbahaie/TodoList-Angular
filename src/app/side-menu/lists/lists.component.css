@@ -1,9 +1,15 @@
 .mat-list-item{
-    color: white;
     border-bottom: 2px solid white;
     margin-bottom: 30px;
     width: 90% !important;
     cursor: pointer;
+}
+.mat-list-item a{
+    width: 100%;
+    display: flex;
+    margin: 0;
+    text-decoration: none;
+    color: white;
 }
 .edit-btn{
     margin-left: 0px;

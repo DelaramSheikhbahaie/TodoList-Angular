@@ -1,0 +1,10 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav [(opened)] = "opened" mode="side">
+      <app-side-menu></app-side-menu>
+      <button class="toggle-button" (click)="sidenav.toggle()">Hide Lists</button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <button class="toggle-button" (click)="sidenav.toggle()">Show Lists</button>
+      <app-main-page></app-main-page>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

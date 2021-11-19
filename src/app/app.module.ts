@@ -12,6 +12,7 @@ import { ListsComponent } from './side-menu/lists/lists.component';
 import { MaterialModule } from './material/material.module';
 import { CreateTodoComponent } from './main-page/create-todo/create-todo.component';
 import { SenderService } from './services/sender.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SenderService } from './services/sender.service';
     SideMenuComponent,
     MainPageComponent,
     ListsComponent,
-    CreateTodoComponent
+    CreateTodoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
