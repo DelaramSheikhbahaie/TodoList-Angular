@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SenderService } from '../services/sender.service';
+import { TasksDataService } from '../services/tasks-data.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -9,10 +10,13 @@ import { SenderService } from '../services/sender.service';
 export class SideMenuComponent implements OnInit {
   
   inputListName:string;
+  allLists:[]
 
-  constructor(private service : SenderService) { }
+  constructor(private service : SenderService , private apiService:TasksDataService) { }
 
   ngOnInit(): void {
+    // this.allLists = this.apiService.getAllLists()
+    // this.service.updateList(this.allLists)
   }
   addList(){
     if(this.inputListName !== ""){

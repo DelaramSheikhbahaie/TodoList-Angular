@@ -12,13 +12,6 @@ export class TasksDataService {
 
   constructor(private http:HttpClient) {}
 
-  // getSingleUser(id): Observable<any> {
-  //   return this.http.get<any>(this.url + '/users/' + id)
-  //   .pipe(
-  //     retry(1),
-  //     catchError(this.processError)
-  //   )
-  // } 
   updateTodos(id:number , taskData : object){
     this.http.put(this.url+'api/tasks/:id', taskData).subscribe(
       (response) => console.log(response),
@@ -32,13 +25,40 @@ export class TasksDataService {
     )
   }
   insertTask(taskData : object){
-    this.http.post('api/tasks', taskData).subscribe(
+    this.http.post(this.url+'api/tasks', taskData).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
+  }
+  getAllLists(){
+    this.http.get(this.url+'api/lists').subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
+  }
+  updateList(id:number , listInfo : object){
+    this.http.put(this.url+'api/lists/:id', listInfo).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
+  }
+  deleteList(id:number){
+    this.http.delete(this.url+'api/lists/:id').subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
   }
   } 
-  
+
+
+  // getSingleUser(id): Observable<any> {
+  //   return this.http.get<any>(this.url + '/users/' + id)
+  //   .pipe(
+  //     retry(1),
+  //     catchError(this.processError)
+  //   )
+  // } 
+
   // addUser(data): Observable<User> {
   //   return this.httpClient.post<User>(this.endpoint + '/users', JSON.stringify(data), this.httpHeader)
   //   .pipe(
