@@ -19,8 +19,8 @@ export class TasksDataService {
   //     catchError(this.processError)
   //   )
   // } 
-  updateTodos(id:number , formData){
-    this.http.put(this.url+'api/tasks/:id', formData).subscribe(
+  updateTodos(id:number , taskData : object){
+    this.http.put(this.url+'api/tasks/:id', taskData).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )

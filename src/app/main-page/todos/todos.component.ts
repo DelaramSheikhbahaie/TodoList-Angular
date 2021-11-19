@@ -21,6 +21,7 @@ export class TodosComponent implements OnInit {
   dateEditInput:String;
   descriptionEditInput:String;
   element: HTMLElement;
+  taskData:object;
 
   constructor(
      private service:SenderService ,
@@ -55,13 +56,16 @@ export class TodosComponent implements OnInit {
     // console.log(this.element)
     // this.element.style.display = "none"
     this.todoEditMode= !this.todoEditMode;
-    if(this.todoEditMode){
-      // var formData: any = new FormData();
-      // formData.append("content", this.form.get('content').value);
-      // formData.append("date", this.form.get('date').value);
-      // formData.append("description", this.form.get('description').value);
-      // this.apiService.updateTodos(id . formData)
-    }
-    
+  }
+  editTodo(id:number){
+      this.todoEditMode= !this.todoEditMode;
+      this.taskData ={
+        listId : this.listID ,
+        content:this.contentEditInput ,
+        date:this.dateEditInput ,
+        description:this.descriptionEditInput,
+        compeleted:false ,
+      }
+      this.apiService.updateTodos(id , this.taskData);
   }
 }

@@ -10,7 +10,7 @@
                         <input *ngIf="todoEditMode == true" 
                                 class="todos-edit-input"
                                 value="{{todo.content}}"
-                                (keydown.enter) = "updateTodo(id)"
+                                (keydown.enter) = "editTodo(id)"
                                 
                         />
                     </span>
@@ -20,7 +20,7 @@
                         <input *ngIf="todoEditMode == true" 
                                 class="todos-edit-input"
                                 value="{{ todo.description}}"
-                                (keydown.enter) = "updateTodo(id)"
+                                (keydown.enter) = "editTodo(id)"
                                 
                         />
                     </span>
@@ -30,7 +30,7 @@
                         <input *ngIf="todoEditMode == true" 
                                 class="todos-edit-input"
                                 value="{{ todo.date}}"
-                                (keydown.enter) = "updateTodo(id)"
+                                (keydown.enter) = "editTodo(id)"
                         />
                     </span>
                 </div>

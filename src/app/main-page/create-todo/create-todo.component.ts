@@ -27,7 +27,7 @@ export class CreateTodoComponent implements OnInit {
     if(this.contentInput !== "" ){
       // && this.dateInput !== "" && this.descriptionInput !== ""
       this.taskData ={
-        list : this.listId ,
+        listId : this.listId ,
         content:this.contentInput ,
         date:this.dateInput ,
         description:this.descriptionInput,
