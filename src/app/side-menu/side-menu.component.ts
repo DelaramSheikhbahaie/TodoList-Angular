@@ -16,7 +16,7 @@ export class SideMenuComponent implements OnInit {
   }
   addList(){
     if(this.inputListName !== ""){
-      this.service.updateList({name:this.inputListName})
+      this.service.updateList({title:this.inputListName , date:Date.now() , isMain:false})
       this.inputListName = "";
     }
     

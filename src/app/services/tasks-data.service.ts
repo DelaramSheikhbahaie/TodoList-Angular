@@ -20,12 +20,17 @@ export class TasksDataService {
   //   )
   // } 
   updateTodos(id:number , formData){
-    this.http.put('api/tasks/:id', formData).subscribe(
+    this.http.put(this.url+'api/tasks/:id', formData).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
   }
-
+  insertTask(taskData : object){
+    this.http.post('api/tasks', taskData).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
+  }
   } 
   
   // addUser(data): Observable<User> {

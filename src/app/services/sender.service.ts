@@ -7,7 +7,7 @@ import { List } from '../models/lists';
 })
 export class SenderService {
 
-  private lists = new BehaviorSubject([{name:"Daily Tasks"} , {name:"Compeleted Tasks"}]);
+  private lists = new BehaviorSubject([{title:"Daily Tasks" , date:"Date.now()" ,isMain:true} , {title:"Compeleted Tasks", date:"Date.now()" , isMain:false}]);
   sharedLists = this.lists.asObservable();
 
   private listID = new BehaviorSubject(0);
@@ -16,17 +16,8 @@ export class SenderService {
   private listName = new BehaviorSubject("Daily Tasks");
   sharedListName = this.listName.asObservable();
 
-  private TodoList = new BehaviorSubject([{listId:0 , content:"from service" , date:"1.1.1" , description:"this is a todo" , compeleted:false}]);
+  private TodoList = new BehaviorSubject([{listId:0 , content:"from service" , date:"Date.now()" , description:"this is a todo" , compeleted:false}]);
   sharedTodoList = this.TodoList.asObservable();
-
-  // private todoName = new BehaviorSubject("")
-  // sharedTodoName = this.todoName.asObservable();
-
-  // private todoDate = new BehaviorSubject("")
-  // sharedTodoDate = this.todoDate.asObservable();
-
-  // private todoDescription = new BehaviorSubject("")
-  // sharedTodoDescription = this.todoDescription.asObservable();
 
   constructor() { }
 

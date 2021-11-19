@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TasksDataService } from 'src/app/services/tasks-data.service';
 import { SenderService } from '../../services/sender.service';
 
 @Component({
@@ -12,9 +13,10 @@ export class CreateTodoComponent implements OnInit {
   dateInput:String;
   descriptionInput:String;
   listId:number;
-  listName:string
+  listName:string;
+  taskData:object
 
-  constructor(private service:SenderService) { }
+  constructor(private service:SenderService , private apiService : TasksDataService) { }
 
   ngOnInit(): void {
     this.service.sharedListID.subscribe(id => this.listId =id)
@@ -24,14 +26,14 @@ export class CreateTodoComponent implements OnInit {
   addTodo(){
     if(this.contentInput !== "" ){
       // && this.dateInput !== "" && this.descriptionInput !== ""
-      this.service.updateTodoList(
-      {
-        listId : this.listId ,
+      this.taskData ={
+        list : this.listId ,
         content:this.contentInput ,
         date:this.dateInput ,
         description:this.descriptionInput,
-        compeleted:false ,
-      })
+        done:false ,
+      }
+      this.apiService.insertTask(this.taskData)
       // console.log(this.dateInput.slice(3,11))
       this.contentInput="";
       this.dateInput="";
