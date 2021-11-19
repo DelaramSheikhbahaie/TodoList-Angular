@@ -18,6 +18,8 @@
 }
 .todos-number{
     margin-right: 15px;
+    font-weight: bold;
+    color: #6D07CB;
 }
 .todos-info{
     width: 60%;
