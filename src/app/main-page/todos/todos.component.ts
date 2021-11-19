@@ -69,4 +69,8 @@ export class TodosComponent implements OnInit {
       }
       this.apiService.updateTodos(id , this.taskData);
   }
+  moveToDailyList(todo){
+    todo.listId = 1
+    this.apiService.insertTask(todo)
+  }
 }

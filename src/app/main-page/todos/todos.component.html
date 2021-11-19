@@ -40,7 +40,7 @@
                         <button mat-icon-button color="accent" (click) = "updateTodo(id)">Edit</button>
                     </p>
                     <p *ngIf="listID !== 0"><!--id 0 => daily Tasks -->
-                        <button class="edit-btn" mat-icon-button>Move To Daily Tasks</button> 
+                        <button class="edit-btn" (click) ="moveToDailyList(todo)" mat-icon-button>Move To Daily Tasks</button> 
                     </p>
                     <button class="remove-btn" (click) = "deleteTodo(id)" mat-icon-button color="warn">Remove</button>
                 </div>
