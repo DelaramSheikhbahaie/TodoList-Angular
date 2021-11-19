@@ -37,6 +37,7 @@
     border-radius: 10px;
     padding:5px;
     outline: none;
+    display: none;
 }
 .todos-buttons{
     display: flex !important;

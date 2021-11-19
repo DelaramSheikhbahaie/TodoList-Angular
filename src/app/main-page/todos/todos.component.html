@@ -6,8 +6,8 @@
                     <span>
                         <em class="todos-number">{{ id+1 }}</em>
                         <strong >Title : </strong>
-                        <p *ngIf="todoEditMode == false">{{ todo.content}}</p>
-                        <input *ngIf="todoEditMode == true" 
+                        <p id="title-{{id}}" >{{ todo.content}}</p>
+                        <input id="title-{{id}}-input"
                                 class="todos-edit-input"
                                 value="{{todo.content}}"
                                 (keydown.enter) = "editTodo(id)"
@@ -16,8 +16,8 @@
                     </span>
                     <span>
                         <strong>Description : </strong>
-                        <p *ngIf="todoEditMode == false">{{ todo.description}}</p>
-                        <input *ngIf="todoEditMode == true" 
+                        <p id="description-{{id}}">{{ todo.description}}</p>
+                        <input id="description-{{id}}-input" 
                                 class="todos-edit-input"
                                 value="{{ todo.description}}"
                                 (keydown.enter) = "editTodo(id)"
@@ -26,8 +26,8 @@
                     </span>
                     <span>
                         <strong>Date : </strong>
-                        <p *ngIf="todoEditMode == false">{{ todo.date}}</p>
-                        <input *ngIf="todoEditMode == true" 
+                        <p id="date-{{id}}">{{ todo.date}}</p>
+                        <input id="date-{{id}}-input" 
                                 class="todos-edit-input"
                                 value="{{ todo.date}}"
                                 (keydown.enter) = "editTodo(id)"
@@ -37,7 +37,7 @@
                 <div class="todos-buttons">
                     <button class="done-btn" mat-icon-button>Done</button>
                     <p *ngIf="listID !== 1" class="edit-btn"><!--id 1 => done Tasks -->
-                        <button mat-icon-button color="accent" (click) = "updateTodo(id)">Edit</button>
+                        <button mat-icon-button color="accent" (click) = "editTodo(id)">Edit</button>
                     </p>
                     <p *ngIf="listID !== 0"><!--id 0 => daily Tasks -->
                         <button class="edit-btn" (click) ="moveToDailyList(todo)" mat-icon-button>Move To Daily Tasks</button> 
