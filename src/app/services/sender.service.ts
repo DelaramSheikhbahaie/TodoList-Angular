@@ -16,7 +16,7 @@ export class SenderService {
   private listName = new BehaviorSubject("Daily Tasks");
   sharedListName = this.listName.asObservable();
 
-  private TodoList = new BehaviorSubject([{listId:0 , content:"from service" , date:"Date.now()" , description:"this is a todo" , compeleted:false} ,{listId:0 , content:"from service-2" , date:"Date.now()" , description:"this is a todo" , compeleted:false}]);
+  private TodoList = new BehaviorSubject([{listId:0 , content:"from service" , date:"Date.now()" , description:"this is a todo" , compeleted:false , isMain:true} ,{listId:0 , content:"from service-2" , date:"Date.now()" , description:"this is a todo" , compeleted:false, isMain:false}]);
   sharedTodoList = this.TodoList.asObservable();
 
   constructor() { }

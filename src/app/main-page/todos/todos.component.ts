@@ -97,11 +97,12 @@ export class TodosComponent implements OnInit {
         date:this.dateEditInput ,
         description:this.descriptionEditInput,
         compeleted:false ,
+        isMain :false ,
       }
       this.apiService.updateTodos(id , this.taskData);
   }
   moveToDailyList(todo){
-    todo.listId = 1
+    todo.isMain = true
     this.apiService.insertTask(todo)
   }
 }
