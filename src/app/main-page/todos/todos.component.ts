@@ -48,7 +48,8 @@ export class TodosComponent implements OnInit {
   }
 
   deleteTodo (id:number){
-    this.todos = this.todos.filter((todo , index)=> index !== id)
+    // this.todos = this.todos.filter((todo , index)=> index !== id)
+    this.apiService.deleteTodos(id)
   }
 
   updateTodo(id:number){

@@ -25,6 +25,12 @@ export class TasksDataService {
       (error) => console.log(error)
     )
   }
+  deleteTodos(id:number){
+    this.http.delete(this.url+'api/tasks/:id').subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
+  }
   insertTask(taskData : object){
     this.http.post('api/tasks', taskData).subscribe(
       (response) => console.log(response),
