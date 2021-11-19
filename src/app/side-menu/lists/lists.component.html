@@ -3,10 +3,18 @@
     <a [routerLink]="[['/list'] , id]">
         <p>{{list.title}}</p>
         <p *ngIf="id !== 0">
-            <button class="edit-btn" mat-icon-button>
+            <button 
+                class="edit-btn" 
+                mat-icon-button
+                matTooltip="Edit list`s name" matTooltipPosition = left>
                 <mat-icon>edit</mat-icon>
             </button>
-            <button class="delete-btn" (click)="deleteList(id)" mat-icon-button color="warn">
+            <button 
+                class="delete-btn" 
+                (click)="deleteList(id)" 
+                mat-icon-button 
+                color="warn"
+                matTooltip="Delete list" matTooltipPosition = left>
                 <mat-icon>delete</mat-icon>
             </button>
         </p>
