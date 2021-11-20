@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, SimpleChange } from '@angular/core';
 import { Todo } from 'src/app/models/todos';
 import { SenderService } from 'src/app/services/sender.service';
 import { TasksDataService } from 'src/app/services/tasks-data.service';
-import { ElementRef, ViewChild } from '@angular/core';
-// import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-todos',
@@ -16,7 +14,6 @@ export class TodosComponent implements OnInit {
   inputTodos:string = "";
   listID:number;
   todoEditMode:boolean = false;
-  // form: FormGroup;
   contentEditInput:String;
   dateEditInput:String;
   descriptionEditInput:String;
@@ -31,20 +28,17 @@ export class TodosComponent implements OnInit {
   constructor(
      private service:SenderService ,
      private apiService :TasksDataService ,
-    //  public fb: FormBuilder
-     ) { 
-      // this.form = this.fb.group({
-      //   concept: this.contentEditInput,
-      //   date: this.dateEditInput ,
-      //   description : this.descriptionEditInput
-    // })
-     }
+    ) {}
 
   ngOnInit(): void {
-    this.service.sharedTodoList.subscribe(todoList => this.todos = todoList)
     this.service.sharedListID.subscribe(id => this.listID = id)
+    this.service.sharedTodoList.subscribe(
+      todoList => this.todos = todoList)
+      // .filter(
+      //   todo=>todo.listId === this.listID)
+      // )
+    this.apiService.GetAllTasks()
   }
-
   toggleDone (id:number){
     this.todos.map((todo , index)=>{
       if(id === index) todo.compeleted = ! todo.compeleted

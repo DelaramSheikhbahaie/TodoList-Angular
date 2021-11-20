@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { List } from '../models/lists';
+import { Todo } from '../models/todos';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class SenderService {
   private listName = new BehaviorSubject("Daily Tasks");
   sharedListName = this.listName.asObservable();
 
-  private TodoList = new BehaviorSubject([{listId:0 , content:"from service" , date:"Date.now()" , description:"this is a todo" , compeleted:false , isMain:true} ,{listId:0 , content:"from service-2" , date:"Date.now()" , description:"this is a todo" , compeleted:false, isMain:false}]);
+  private TodoList = new BehaviorSubject([]);
   sharedTodoList = this.TodoList.asObservable();
 
   constructor() { }
@@ -31,10 +32,7 @@ export class SenderService {
     this.lists.next(updatedValue);
   }
   updateTodoList(todoList) {
-    const currentValue = this.TodoList.value;
-    const updatedValue = [...currentValue, todoList];
+    const updatedValue = todoList;
     this.TodoList.next(updatedValue);
   }
-  
-  // public listsArray:List[];
 }

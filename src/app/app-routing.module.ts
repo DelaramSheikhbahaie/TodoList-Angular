@@ -8,10 +8,10 @@ import { ListsComponent } from './side-menu/lists/lists.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/list', pathMatch: 'full' },
   // { path: 'list/:id', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'list/:id', component: HomeComponent},
+  // { path: 'home', component: HomeComponent },
+  { path: 'list', component: HomeComponent},
 ];
 
 @NgModule({

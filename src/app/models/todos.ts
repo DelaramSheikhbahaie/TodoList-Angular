@@ -1,8 +1,7 @@
 export class Todo {
     listId:number;
-    content:string;
+    title:string;
     date:string;
     description:string;
     compeleted:boolean;
-    isMain:boolean
 }

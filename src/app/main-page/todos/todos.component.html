@@ -6,10 +6,10 @@
                     <span>
                         <em class="todos-number">{{ id+1 }}</em>
                         <strong >Title:</strong>
-                        <p id="title-{{id}}" >{{ todo.content}}</p>
+                        <p id="title-{{id}}" >{{todo.title}}</p>
                         <input id="title-{{id}}-input"
                                 class="todos-edit-input"
-                                value="{{todo.content}}"
+                                value="{{todo.title}}"
                                 (keydown.enter) = "editTodo(id)"
                         />
                     </span>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="todos-buttons">
                     <button 
-                        *ngIf="todo.isMain == false" 
+                        *ngIf="todo.listId !== 0" 
                         class="edit-btn" 
                         (click) ="moveToDailyList(todo)" 
                         mat-icon-button
