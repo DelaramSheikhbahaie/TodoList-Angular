@@ -13,7 +13,7 @@ export class TasksDataService {
   todos:any;
 
   constructor(private http:HttpClient, private senderService:SenderService ) {}
-  GetAllTasks(){
+  getAllTasks(){
     this.http.get(this.url+'api/tasks').subscribe(
       (response) => {this.senderService.updateTodoList(response)},
       (error) => console.log(error)
@@ -40,7 +40,13 @@ export class TasksDataService {
   
   getAllLists(){
     this.http.get(this.url+'api/lists').subscribe(
-      (response) => console.log(response),
+      (response) => this.senderService.updateList(response),
+      (error) => console.log(error)
+    )
+  }
+  insertList(listData : object){
+    this.http.post(this.url+'api/lists', listData).subscribe(
+      (response) => {console.log(response)},
       (error) => console.log(error)
     )
   }
@@ -56,50 +62,5 @@ export class TasksDataService {
       (error) => console.log(error)
     )
   }
-  } 
-
-
-  // getSingleUser(id): Observable<any> {
-  //   return this.http.get<any>(this.url + '/users/' + id)
-  //   .pipe(
-  //     retry(1),
-  //     catchError(this.processError)
-  //   )
-  // } 
-
-  // addUser(data): Observable<User> {
-  //   return this.httpClient.post<User>(this.endpoint + '/users', JSON.stringify(data), this.httpHeader)
-  //   .pipe(
-  //     retry(1),
-  //     catchError(this.processError)
-  //   )
-  // }  
-
-  // updateUser(id, data): Observable<User> {
-  //   return this.httpClient.put<User>(this.endpoint + '/users/' + id, JSON.stringify(data), this.httpHeader)
-  //   .pipe(
-  //     retry(1),
-  //     catchError(this.processError)
-  //   )
-  // }
-
-  // deleteUser(id){
-  //   return this.httpClient.delete<User>(this.endpoint + '/users/' + id, this.httpHeader)
-  //   .pipe(
-  //     retry(1),
-  //     catchError(this.processError)
-  //   )
-  // }
-
-  // processError(err) {
-  //    let message = '';
-  //    if(err.error instanceof ErrorEvent) {
-  //     message = err.error.message;
-  //    } else {
-  //     message = `Error Code: ${err.status}\nMessage: ${err.message}`;
-  //    }
-  //    console.log(message);
-  //    return throwError(message);
-  // }
-  
+  }
 

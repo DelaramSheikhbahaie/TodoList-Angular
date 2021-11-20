@@ -11,16 +11,22 @@ export class SideMenuComponent implements OnInit {
   
   inputListName:string;
   allLists:[]
+  listData:{}
 
   constructor(private service : SenderService , private apiService:TasksDataService) { }
 
   ngOnInit(): void {
-    // this.allLists = this.apiService.getAllLists()
+    this.apiService.getAllLists()
     // this.service.updateList(this.allLists)
   }
   addList(){
     if(this.inputListName !== ""){
-      this.service.updateList({title:this.inputListName , date:Date.now() , isMain:false})
+      this.listData={
+        title:this.inputListName 
+        , date:Date.now() 
+        , isMain:false
+      }
+      this.apiService.insertList(this.listData)
       this.inputListName = "";
     }
     

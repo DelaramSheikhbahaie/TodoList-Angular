@@ -28,11 +28,10 @@ export class SenderService {
   }
   updateList(list) {
     const currentValue = this.lists.value;
-    const updatedValue = [...currentValue, list];
+    const updatedValue = currentValue.concat(list)
     this.lists.next(updatedValue);
   }
   updateTodoList(todoList) {
-    const updatedValue = todoList;
-    this.TodoList.next(updatedValue);
+    this.TodoList.next(todoList);
   }
 }

@@ -37,7 +37,7 @@ export class TodosComponent implements OnInit {
       // .filter(
       //   todo=>todo.listId === this.listID)
       // )
-    this.apiService.GetAllTasks()
+    this.apiService.getAllTasks()
   }
   toggleDone (id:number){
     this.todos.map((todo , index)=>{
