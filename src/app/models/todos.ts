@@ -4,4 +4,5 @@ export class Todo {
     date:string;
     description:string;
     compeleted:boolean;
+    isDaily:boolean
 }

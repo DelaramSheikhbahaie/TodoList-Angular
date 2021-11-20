@@ -13,16 +13,9 @@ export class TasksDataService {
   todos:any;
 
   constructor(private http:HttpClient, private senderService:SenderService ) {}
-
-  updateTodos(id:number , taskData : object){
-    this.http.put(this.url+'api/tasks/:id', taskData).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    )
-  }
-  deleteTodos(id:number){
-    this.http.delete(this.url+'api/tasks/:id').subscribe(
-      (response) => console.log(response),
+  GetAllTasks(){
+    this.http.get(this.url+'api/tasks').subscribe(
+      (response) => {this.senderService.updateTodoList(response)},
       (error) => console.log(error)
     )
   }
@@ -32,12 +25,19 @@ export class TasksDataService {
       (error) => console.log(error)
     )
   }
-  GetAllTasks(){
-    this.http.get(this.url+'api/tasks').subscribe(
-      (response) => {this.senderService.updateTodoList(response)},
+  updateTodos(id:number , taskData : object){
+    this.http.put(this.url+'api/tasks/:id', taskData).subscribe(
+      (response) => console.log(response),
       (error) => console.log(error)
     )
   }
+  deleteTodos(id:number){
+    this.http.delete(this.url+`api/tasks/:${id}`).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
+  }
+  
   getAllLists(){
     this.http.get(this.url+'api/lists').subscribe(
       (response) => console.log(response),
