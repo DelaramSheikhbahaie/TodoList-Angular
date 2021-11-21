@@ -73,7 +73,7 @@ export class TodosComponent implements OnInit {
     if(this.todoEditMode){
       this.ItemTitle.style.display = "none"
       this.ItemTitleInput.style.display = "flex"
-      this.titleEditInput = todo.title //to show value in edit box
+      this.titleEditInput = todo.title //to show current value in edit box
 
       this.ItemDescription.style.display = "none"
       this.ItemDescriptionInput.style.display = "flex"

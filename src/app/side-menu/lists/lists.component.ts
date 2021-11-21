@@ -23,24 +23,26 @@ export class ListsComponent implements OnInit {
   deleteList (id){
     this.apiService.deleteList(id)
   }
-  changeStyleOnEdit(id){
+  changeStyleOnEdit(id , list){
     this.ListTitle = document.getElementById(`title-${id}`) as HTMLElement;
     this.ListTitleInput = document.getElementById(`title-${id}-input`) as HTMLElement;
     if(this.ListEditMode){
       this.ListTitle.style.display = "none"
       this.ListTitleInput.style.display = "flex"
+      this.NameEditInput = list.title //to show current value in edit box
     }
     if(!this.ListEditMode){
       this.ListTitle.style.display = "flex"
       this.ListTitleInput.style.display = "none"
+      list.title = this.NameEditInput  //to show updated value in list before refresh
+      this.NameEditInput = ""
     }
   }
   editList(id){
     this.ListEditMode =!this.ListEditMode
     this.lists.map((list)=>{
       if(id === list._id) {
-        this.changeStyleOnEdit(id);
-        list.title = this.NameEditInput
+        this.changeStyleOnEdit(id , list);
       }
     })
   }
