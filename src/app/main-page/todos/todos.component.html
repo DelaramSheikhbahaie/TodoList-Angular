@@ -10,6 +10,7 @@
                         <input id="title-{{todo._id}}-input"
                                 class="todos-edit-input"
                                 value="{{todo.title}}"
+                                [(ngModel)] ="titleEditInput"
                                 (keydown.enter) = "editTodo(todo._id)"
                         />
                     </span>
@@ -18,7 +19,8 @@
                         <p id="description-{{todo._id}}">{{ todo.description}}</p>
                         <input id="description-{{todo._id}}-input" 
                                 class="todos-edit-input"
-                                value="{{ todo.description}}"
+                                [(ngModel)] ="descriptionEditInput"
+                                value="{{todo.description}}"
                                 (keydown.enter) = "editTodo(todo._id)"
                         />
                     </span>
@@ -27,6 +29,7 @@
                         <p id="date-{{todo._id}}">{{ todo.date}}</p>
                         <input id="date-{{todo._id}}-input" 
                                 class="todos-edit-input"
+                                [(ngModel)] ="dateEditInput"
                                 value="{{ todo.date}}"
                                 (keydown.enter) = "editTodo(todo._id)"
                         />
