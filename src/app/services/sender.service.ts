@@ -31,8 +31,18 @@ export class SenderService {
     const updatedValue = currentValue.concat(list)
     this.lists.next(updatedValue);
   }
+  displayListsUpdateBeforeRefresh(newValue){
+    const currentValue = this.lists.value;
+    const updatedValue = [...currentValue , newValue]
+    this.lists.next(updatedValue);
+  }
   updateTodoList(todoList) {
     this.TodoList.next(todoList);
     console.log(todoList)
+  }
+  displayTodosUpdateBeforeRefresh(newValue){
+    const currentValue = this.TodoList.value;
+    const updatedValue = [...currentValue , newValue]
+    this.TodoList.next(updatedValue);
   }
 }

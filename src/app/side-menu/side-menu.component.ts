@@ -27,6 +27,7 @@ export class SideMenuComponent implements OnInit {
         , isMain:false
       }
       this.apiService.insertList(this.listData)
+      this.service.displayListsUpdateBeforeRefresh(this.listData)
       this.inputListName = "";
     }
     
