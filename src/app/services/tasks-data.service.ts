@@ -25,13 +25,13 @@ export class TasksDataService {
       (error) => console.log(error)
     )
   }
-  updateTodos(id:number , taskData : object){
+  updateTodos(id , taskData : object){
     this.http.put(this.url+`api/tasks/:${id}`, taskData).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
   }
-  deleteTodos(id:number){
+  deleteTodos(id){
     this.http.delete(this.url+`api/tasks/:${id}`).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
@@ -40,7 +40,8 @@ export class TasksDataService {
   
   getAllLists(){
     this.http.get(this.url+'api/lists').subscribe(
-      (response) => this.senderService.updateList(response),
+      (response) => {this.senderService.updateList(response); console.log
+      (response)},
       (error) => console.log(error)
     )
   }
@@ -50,13 +51,13 @@ export class TasksDataService {
       (error) => console.log(error)
     )
   }
-  updateList(id:number , listInfo : object){
+  updateList(id , listInfo : object){
     this.http.put(this.url+'api/lists/:id', listInfo).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
   }
-  deleteList(id:number){
+  deleteList(id){
     this.http.delete(this.url+'api/lists/:id').subscribe(
       (response) => console.log(response),
       (error) => console.log(error)

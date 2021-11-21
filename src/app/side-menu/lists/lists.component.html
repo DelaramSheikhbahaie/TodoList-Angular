@@ -1,24 +1,31 @@
 <mat-list>
-   <mat-list-item *ngFor="let list of lists; let id = index;" (click)="openList(id , list.title)">
-    <a [routerLink]="[['/list'] , id]">
-        <p>{{list.title}}</p>
-        <p *ngIf="id !== 0">
+   <mat-list-item *ngFor="let list of lists; let count = index;">
+    <a [routerLink]="[['/list'] , list._id]"  (click)="openList(list._id , list.title)">
+        <p id="title-{{list._id}}">{{list.title}}</p>
+        <input  id="title-{{list._id}}-input"
+                class="list-edit-input"
+                [(ngModel)] =" NameEditInput"
+                value="{{list.title}}"
+                (keydown.enter) ="editList(list._id)"
+        />
+    </a>
+        <p *ngIf="list._id !== 0">
             <button 
                 class="edit-btn" 
+                (click)="editList(list._id)"
                 mat-icon-button
                 matTooltip="Edit list`s name" matTooltipPosition = left>
                 <mat-icon>edit</mat-icon>
             </button>
             <button 
                 class="delete-btn" 
-                (click)="deleteList(id)" 
+                (click)="deleteList(list._id)" 
                 mat-icon-button 
                 color="warn"
                 matTooltip="Delete list" matTooltipPosition = left>
                 <mat-icon>delete</mat-icon>
             </button>
         </p>
-    </a>
     </mat-list-item>
 </mat-list>
 

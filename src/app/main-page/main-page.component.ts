@@ -8,12 +8,12 @@ import { SenderService } from '../services/sender.service';
 })
 export class MainPageComponent implements OnInit {
 
-  listId:number;
+  listid;
   listName:string;
   constructor(private service : SenderService) { }
 
   ngOnInit(): void {
-    this.service.sharedListID.subscribe(id => this.listId = id)
+    // this.service.sharedListID.subscribe(id => this.listId = id)
     this.service.sharedListName.subscribe(name => this.listName = name)
   }
 

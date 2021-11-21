@@ -13,6 +13,14 @@
     text-decoration: none;
     color: white;
 }
+.list-edit-input{
+    display: none;
+    border: .5px solid #6D07CB;
+    border-radius: 10px;
+    margin: 0 0 0 5px;
+    padding:7px;
+    outline: none;
+}
 .edit-btn{
     margin-left: 0px;
     color: #210838;

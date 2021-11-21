@@ -13,7 +13,7 @@ export class TodosComponent implements OnInit {
 
   todos:Todo[];
   inputTodos:string = "";
-  listID:number;
+  listid;
   todoEditMode:boolean = false;
   contentEditInput:String;
   dateEditInput:String;
@@ -33,7 +33,7 @@ export class TodosComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.service.sharedListID.subscribe(id => this.listID = id)
+    // this.service.sharedListID.subscribe(id => this.listID = id)
     this.service.sharedTodoList.subscribe(
       todoList => this.todos = todoList)
       // .filter(
@@ -57,11 +57,11 @@ export class TodosComponent implements OnInit {
     })
   }
 
-  deleteTodo (id:number){
+  deleteTodo (id){
     this.apiService.deleteTodos(id)
   }
 
-  changeStyleOnEdit(id:number){
+  changeStyleOnEdit(id){
     this.ItemTitle = document.getElementById(`title-${id}`) as HTMLElement;
     this.ItemTitleInput = document.getElementById(`title-${id}-input`) as HTMLElement;
 
@@ -92,11 +92,11 @@ export class TodosComponent implements OnInit {
       this.ItemDateInput.style.display = "none"
     }
   }
-  editTodo(id:number){
+  editTodo(id){
       this.todoEditMode= !this.todoEditMode;
       this.changeStyleOnEdit(id)
       this.taskData ={
-        listId : this.listID ,
+        // listId : this.listID ,
         content:this.contentEditInput ,
         date:this.dateEditInput ,
         description:this.descriptionEditInput,

@@ -15,14 +15,14 @@ export class CreateTodoComponent implements OnInit {
   dateInput:String;
   descriptionInput:String;
   isDaily:boolean
-  listId:number;
+  listid;
   listName:string;
   taskData:object
   
   constructor(private service:SenderService , private apiService : TasksDataService) { }
 
   ngOnInit(): void {
-    this.service.sharedListID.subscribe(id => this.listId =id)
+    // this.service.sharedListID.subscribe(id => this.listId =id)
     this.service.sharedListName.subscribe(name => this.listName = name)
   }
 

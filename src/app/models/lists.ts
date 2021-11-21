@@ -1,6 +1,7 @@
 // var mongoose = require('mongoose')
 //   , Schema = mongoose.Schema
 export class List {
+    _id;
     title: string;
     date: string;
     isMain: Boolean;
