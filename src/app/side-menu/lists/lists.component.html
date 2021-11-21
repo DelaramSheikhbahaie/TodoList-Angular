@@ -9,7 +9,7 @@
                 (keydown.enter) ="submitEdit(list._id)"
         />
     </a>
-        <p *ngIf="list._id !== 0">
+        <span *ngIf="list._id !== 0" class="buttons-section">
             <button 
                 class="edit-btn" 
                 (click)="switchToEditMode(list._id)"
@@ -25,7 +25,7 @@
                 matTooltip="Delete list" matTooltipPosition = left>
                 <mat-icon>delete</mat-icon>
             </button>
-        </p>
+        </span>
     </mat-list-item>
 </mat-list>
 

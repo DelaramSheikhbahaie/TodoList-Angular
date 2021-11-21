@@ -12,6 +12,7 @@
 }
 .mat-sidenav-content{
     width: 100%;
+    background-color: whitesmoke;
 }
 .main-toggle-button{
     position: absolute;

@@ -17,13 +17,16 @@
     display: none;
     border: .5px solid #6D07CB;
     border-radius: 10px;
-    margin: 0 0 0 5px;
-    padding:7px;
+    margin: 0;
+    padding:10px;
     outline: none;
+}
+.buttons-section{
+    display: flex;
 }
 .edit-btn{
     margin-left: 0px;
-    color: #210838;
+    color: wheat;
 }
 .delete-btn{
     margin-left: 20px;
