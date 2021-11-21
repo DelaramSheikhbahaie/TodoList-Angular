@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, OnInit, SimpleChange } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Todo } from 'src/app/models/todos';
 import { SenderService } from 'src/app/services/sender.service';
 import { TasksDataService } from 'src/app/services/tasks-data.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todos',

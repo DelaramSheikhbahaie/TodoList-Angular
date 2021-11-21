@@ -33,5 +33,6 @@ export class SenderService {
   }
   updateTodoList(todoList) {
     this.TodoList.next(todoList);
+    console.log(todoList)
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksDataService } from 'src/app/services/tasks-data.service';
 import { SenderService } from '../../services/sender.service';
+// var mongoose = require('mongoose')
+//   , Schema = mongoose.Schema
 
 @Component({
   selector: 'app-create-todo',
@@ -16,7 +18,7 @@ export class CreateTodoComponent implements OnInit {
   listId:number;
   listName:string;
   taskData:object
-
+  
   constructor(private service:SenderService , private apiService : TasksDataService) { }
 
   ngOnInit(): void {
@@ -29,12 +31,12 @@ export class CreateTodoComponent implements OnInit {
       // && this.dateInput !== "" && this.descriptionInput !== ""
       this.listName == "Daily Tasks List" ? this.isDaily = true : this.isDaily = false
       this.taskData ={
-        listId : this.listId ,
         title:this.contentInput ,
         date:this.dateInput ,
         description:this.descriptionInput,
         done:false ,
-        isDaily : this.isDaily
+        isDaily : this.isDaily,
+        // list:{type:Schema.ObjectId , ref:"List"}
       }
       this.apiService.insertTask(this.taskData)
       // console.log(this.dateInput.slice(3,11))
