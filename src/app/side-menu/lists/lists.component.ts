@@ -23,6 +23,14 @@ export class ListsComponent implements OnInit {
   deleteList (id){
     this.apiService.deleteList(id)
   }
+  handleEdit(id){
+    this.lists.map((list)=>{
+      if(id === list._id) {
+        this.changeStyleOnEdit(id , list)
+        this.apiService.updateList(id , list);
+      }
+    })
+  }
   changeStyleOnEdit(id , list){
     this.ListTitle = document.getElementById(`title-${id}`) as HTMLElement;
     this.ListTitleInput = document.getElementById(`title-${id}-input`) as HTMLElement;
@@ -38,13 +46,15 @@ export class ListsComponent implements OnInit {
       this.NameEditInput = ""
     }
   }
-  editList(id){
-    this.ListEditMode =!this.ListEditMode
-    this.lists.map((list)=>{
-      if(id === list._id) {
-        this.changeStyleOnEdit(id , list);
-      }
-    })
+  switchToEditMode(id){
+    if(!this.ListEditMode){ //edit only one item at the time
+      this.ListEditMode = true;
+      this.handleEdit(id)
+    }
+  }
+  submitEdit(id){
+      this.ListEditMode = false;
+      this.handleEdit(id)
   }
   openList(id , name:string){
     this.service.nextListInfo(id , name)

@@ -40,8 +40,7 @@ export class TasksDataService {
   
   getAllLists(){
     this.http.get(this.url+'api/lists').subscribe(
-      (response) => {this.senderService.updateList(response); console.log
-      (response)},
+      (response) => {this.senderService.updateList(response);},
       (error) => console.log(error)
     )
   }

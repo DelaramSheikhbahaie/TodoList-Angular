@@ -59,7 +59,14 @@ export class TodosComponent implements OnInit {
   deleteTodo (id){
     this.apiService.deleteTodos(id)
   }
-
+  handleEdit(id){
+    this.todos.map((todo)=>{
+      if(id === todo._id) {
+        this.changeStyleOnEdit(id , todo)
+        this.apiService.updateTodos(id , todo);
+      }
+    })
+  }
   changeStyleOnEdit(id , todo){
     this.ItemTitle = document.getElementById(`title-${id}`) as HTMLElement;
     this.ItemTitleInput = document.getElementById(`title-${id}-input`) as HTMLElement;
@@ -100,22 +107,15 @@ export class TodosComponent implements OnInit {
       this.dateEditInput=""
     }
   }
-  editTodo(id){
-      this.todoEditMode= !this.todoEditMode;
-      this.todos.map((todo)=>{
-        if(id === todo._id) {
-          this.changeStyleOnEdit(id , todo)
-          this.taskData ={
-            // listId : this.listID ,
-            title:this.titleEditInput ,
-            date:this.dateEditInput ,
-            description:this.descriptionEditInput,
-            done:false ,
-            isMain :false ,
-          }
-          this.apiService.updateTodos(id , todo);
-        }
-      })
+  switchToEditMode(id){
+    if(!this.todoEditMode){ //edit only one item at the time
+      this.todoEditMode = true;
+      this.handleEdit(id)
+    }
+  }
+  submitEdit(id){
+      this.todoEditMode = false;
+      this.handleEdit(id)
   }
   moveToDailyList(todo){
     todo.isMain = true

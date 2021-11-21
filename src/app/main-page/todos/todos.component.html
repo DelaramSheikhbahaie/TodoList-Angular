@@ -11,7 +11,7 @@
                                 class="todos-edit-input"
                                 value="{{todo.title}}"
                                 [(ngModel)] ="titleEditInput"
-                                (keydown.enter) = "editTodo(todo._id)"
+                                (keydown.enter) = "submitEdit(todo._id)"
                         />
                     </span>
                     <span>
@@ -21,7 +21,7 @@
                                 class="todos-edit-input"
                                 [(ngModel)] ="descriptionEditInput"
                                 value="{{todo.description}}"
-                                (keydown.enter) = "editTodo(todo._id)"
+                                (keydown.enter) = "submitEdit(todo._id)"
                         />
                     </span>
                     <span>
@@ -31,13 +31,13 @@
                                 class="todos-edit-input"
                                 [(ngModel)] ="dateEditInput"
                                 value="{{ todo.date}}"
-                                (keydown.enter) = "editTodo(todo._id)"
+                                (keydown.enter) = "submitEdit(todo._id)"
                         />
                     </span>
                 </div>
                 <div class="todos-buttons">
                     <button 
-                        *ngIf="todo.isDaily" 
+                        *ngIf="todo.isDaily"
                         class="edit-btn" 
                         (click) ="moveToDailyList(todo)" 
                         mat-icon-button
@@ -52,10 +52,10 @@
                         <mat-icon>done_all</mat-icon>
                     </button>
                     <button 
-                        *ngIf="todo.done == false" 
+                        *ngIf="!todo.done" 
                         class="edit-btn" 
                         mat-icon-button 
-                        (click) = "editTodo(todo._id)"
+                        (click) = "switchToEditMode(todo._id)"
                         matTooltip="Edit task" matTooltipPosition = left>
                         <mat-icon>edit</mat-icon>
                     </button>

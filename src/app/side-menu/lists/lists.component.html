@@ -6,13 +6,13 @@
                 class="list-edit-input"
                 [(ngModel)] =" NameEditInput"
                 value="{{list.title}}"
-                (keydown.enter) ="editList(list._id)"
+                (keydown.enter) ="submitEdit(list._id)"
         />
     </a>
         <p *ngIf="list._id !== 0">
             <button 
                 class="edit-btn" 
-                (click)="editList(list._id)"
+                (click)="switchToEditMode(list._id)"
                 mat-icon-button
                 matTooltip="Edit list`s name" matTooltipPosition = left>
                 <mat-icon>edit</mat-icon>
