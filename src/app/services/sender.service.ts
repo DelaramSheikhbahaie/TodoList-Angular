@@ -38,7 +38,6 @@ export class SenderService {
   }
   updateTodoList(todoList) {
     this.TodoList.next(todoList);
-    console.log(todoList)
   }
   displayTodosUpdateBeforeRefresh(newValue){
     const currentValue = this.TodoList.value;

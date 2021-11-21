@@ -1,34 +1,34 @@
 <!-- <button routerLink="/create-todo" class="add-btn" mat-raised-button>Add Todo</button> -->
     <mat-list>
-        <mat-list-item *ngFor="let todo of todos; let id = index ;" (click) = "toggleDone(id)" class="mat-list-item">
+        <mat-list-item *ngFor="let todo of todos; let count = index" class="mat-list-item">
             <div class="todos-container">
-                <div class="todos-info">
+                <div id="todos-info-{{todo._id}}" class="todos-info">
                     <span>
-                        <em class="todos-number">{{ id+1 }}</em>
+                        <em class="todos-number">{{count + 1}}</em>
                         <strong >Title:</strong>
-                        <p id="title-{{id}}" >{{todo.title}}</p>
-                        <input id="title-{{id}}-input"
+                        <p id="title-{{todo._id}}" >{{todo.title}}</p>
+                        <input id="title-{{todo._id}}-input"
                                 class="todos-edit-input"
                                 value="{{todo.title}}"
-                                (keydown.enter) = "editTodo(id)"
+                                (keydown.enter) = "editTodo(todo._id)"
                         />
                     </span>
                     <span>
                         <strong>Description:</strong>
-                        <p id="description-{{id}}">{{ todo.description}}</p>
-                        <input id="description-{{id}}-input" 
+                        <p id="description-{{todo._id}}">{{ todo.description}}</p>
+                        <input id="description-{{todo._id}}-input" 
                                 class="todos-edit-input"
                                 value="{{ todo.description}}"
-                                (keydown.enter) = "editTodo(id)"
+                                (keydown.enter) = "editTodo(todo._id)"
                         />
                     </span>
                     <span>
                         <strong>Date:</strong>
-                        <p id="date-{{id}}">{{ todo.date}}</p>
-                        <input id="date-{{id}}-input" 
+                        <p id="date-{{todo._id}}">{{ todo.date}}</p>
+                        <input id="date-{{todo._id}}-input" 
                                 class="todos-edit-input"
                                 value="{{ todo.date}}"
-                                (keydown.enter) = "editTodo(id)"
+                                (keydown.enter) = "editTodo(todo._id)"
                         />
                     </span>
                 </div>
@@ -43,6 +43,7 @@
                     </button>
                     <button 
                         class="done-btn" 
+                        (click) = "toggleDone(todo._id)"
                         mat-icon-button
                         matTooltip="Mark as done" matTooltipPosition = left>
                         <mat-icon>done_all</mat-icon>
@@ -51,13 +52,13 @@
                         *ngIf="listID !== 1" 
                         class="edit-btn" 
                         mat-icon-button 
-                        (click) = "editTodo(id)"
+                        (click) = "editTodo(todo._id)"
                         matTooltip="Edit task" matTooltipPosition = left>
                         <mat-icon>edit</mat-icon>
                     </button>
                     <button 
                         class="remove-btn" 
-                        (click) = "deleteTodo(id)" 
+                        (click) = "deleteTodo(todo._id)" 
                         mat-icon-button 
                         color="warn"
                         matTooltip="Delete task" matTooltipPosition = left>

@@ -26,7 +26,7 @@ export class TasksDataService {
     )
   }
   updateTodos(id:number , taskData : object){
-    this.http.put(this.url+'api/tasks/:id', taskData).subscribe(
+    this.http.put(this.url+`api/tasks/:${id}`, taskData).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )

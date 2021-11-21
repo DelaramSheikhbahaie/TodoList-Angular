@@ -24,6 +24,7 @@ export class TodosComponent implements OnInit {
   ItemTitleInput: HTMLElement;
   ItemDescriptionInput: HTMLElement;
   ItemDateInput: HTMLElement;
+  todosInfo:HTMLElement;
   taskData:object;
 
   constructor(
@@ -40,15 +41,23 @@ export class TodosComponent implements OnInit {
       // )
     this.apiService.getAllTasks()
   }
-  toggleDone (id:number){
-    this.todos.map((todo , index)=>{
-      if(id === index) todo.compeleted = ! todo.compeleted
-      return todo
+  toggleDone (id){
+    this.todos.map((todo)=>{
+      if(id === todo._id) {
+        todo.done = !todo.done
+        this.todosInfo = document.getElementById(`todos-info-${id}`) as HTMLElement;
+        if(todo.done){
+          this.todosInfo.style.backgroundColor ="green"
+        }
+        else{
+          this.todosInfo.style.backgroundColor ="transparent"
+        }
+        this.apiService.updateTodos(id , todo)
+      }
     })
   }
 
   deleteTodo (id:number){
-    // this.todos = this.todos.filter((todo , index)=> index !== id)
     this.apiService.deleteTodos(id)
   }
 
