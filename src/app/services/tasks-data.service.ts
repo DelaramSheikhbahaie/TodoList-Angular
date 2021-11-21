@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Todo } from '../models/todos';
 import { SenderService } from './sender.service';
 import { Schema } from 'mongoose';
+import { send } from 'process';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,7 @@ export class TasksDataService {
   }
   deleteTodos(id:Schema.Types.ObjectId){
     this.http.delete(this.url+`api/tasks/${id}`).subscribe(
-      (response) => console.log(response),
+      (response) => {this.senderService.removeDeletedTodosBeforeRefresh(response)},
       (error) => console.log(error)
     )
   }
@@ -59,7 +60,7 @@ export class TasksDataService {
   }
   deleteList(id:Schema.Types.ObjectId){
     this.http.delete(this.url+`api/lists/${id}`).subscribe(
-      (response) => console.log(response),
+      (response) => {this.senderService.removeDeletedListsBeforeRefresh(response)},
       (error) => console.log(error)
     )
   }

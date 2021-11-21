@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Schema } from 'inspector';
 import { BehaviorSubject } from 'rxjs';
 import { List } from '../models/lists';
 import { Todo } from '../models/todos';
@@ -31,17 +32,28 @@ export class SenderService {
     const updatedValue = currentValue.concat(list)
     this.lists.next(updatedValue);
   }
+  updateTodoList(todoList) {
+    this.TodoList.next(todoList);
+  }
   displayListsUpdateBeforeRefresh(newValue){
     const currentValue = this.lists.value;
     const updatedValue = [...currentValue , newValue]
     this.lists.next(updatedValue);
   }
-  updateTodoList(todoList) {
-    this.TodoList.next(todoList);
+  removeDeletedListsBeforeRefresh(item){
+    const lists = this.lists.value;
+    const updatedValue = lists.filter(list => list._id != item._id)
+    this.lists.next(updatedValue);
   }
+
   displayTodosUpdateBeforeRefresh(newValue){
     const currentValue = this.TodoList.value;
     const updatedValue = [...currentValue , newValue]
+    this.TodoList.next(updatedValue);
+  }
+  removeDeletedTodosBeforeRefresh(item){
+    const todos = this.TodoList.value;
+    const updatedValue = todos.filter(todo => todo._id != item._id)
     this.TodoList.next(updatedValue);
   }
 }
