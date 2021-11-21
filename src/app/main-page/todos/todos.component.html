@@ -49,7 +49,7 @@
                         <mat-icon>done_all</mat-icon>
                     </button>
                     <button 
-                        *ngIf="listID !== 1" 
+                        *ngIf="todo.done == false" 
                         class="edit-btn" 
                         mat-icon-button 
                         (click) = "editTodo(todo._id)"

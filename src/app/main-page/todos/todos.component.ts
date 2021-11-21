@@ -100,7 +100,7 @@ export class TodosComponent implements OnInit {
         content:this.contentEditInput ,
         date:this.dateEditInput ,
         description:this.descriptionEditInput,
-        compeleted:false ,
+        done:false ,
         isMain :false ,
       }
       this.apiService.updateTodos(id , this.taskData);
