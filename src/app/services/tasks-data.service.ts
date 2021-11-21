@@ -62,5 +62,11 @@ export class TasksDataService {
       (error) => console.log(error)
     )
   }
+  findList(id){
+    this.http.get(this.url+`api/lists/:${id}`).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
+  }
   }
 

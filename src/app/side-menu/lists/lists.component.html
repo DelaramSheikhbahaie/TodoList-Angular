@@ -1,6 +1,6 @@
 <mat-list>
    <mat-list-item *ngFor="let list of lists; let count = index;">
-    <a [routerLink]="[['/list'] , list._id]"  (click)="openList(list._id , list.title)">
+    <a [routerLink]="['/list', list._id]"  (click)="openList(list._id , list.title)">
         <p id="title-{{list._id}}">{{list.title}}</p>
         <input  id="title-{{list._id}}-input"
                 class="list-edit-input"
