@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { Mongoose, Schema } from 'mongoose';
 import { Todo } from 'src/app/models/todos';
 import { SenderService } from 'src/app/services/sender.service';
 import { TasksDataService } from 'src/app/services/tasks-data.service';
@@ -40,7 +41,7 @@ export class TodosComponent implements OnInit {
       //   todo=>todo.listId === this.listID)
       // )
   }
-  toggleDone (id){
+  toggleDone (id:Schema.Types.ObjectId){
     this.todos.map((todo)=>{
       if(id === todo._id) {
         todo.done = !todo.done
@@ -56,10 +57,10 @@ export class TodosComponent implements OnInit {
     })
   }
 
-  deleteTodo (id){
+  deleteTodo (id:Schema.Types.ObjectId){
     this.apiService.deleteTodos(id)
   }
-  handleEdit(id){
+  handleEdit(id:Schema.Types.ObjectId){
     this.todos.map((todo)=>{
       if(id === todo._id) {
         this.changeStyleOnEdit(id , todo)
@@ -67,7 +68,7 @@ export class TodosComponent implements OnInit {
       }
     })
   }
-  changeStyleOnEdit(id , todo){
+  changeStyleOnEdit(id:Schema.Types.ObjectId , todo){
     this.ItemTitle = document.getElementById(`title-${id}`) as HTMLElement;
     this.ItemTitleInput = document.getElementById(`title-${id}-input`) as HTMLElement;
 
@@ -107,13 +108,13 @@ export class TodosComponent implements OnInit {
       this.dateEditInput=""
     }
   }
-  switchToEditMode(id){
+  switchToEditMode(id:Schema.Types.ObjectId){
     if(!this.todoEditMode){ //edit only one item at the time
       this.todoEditMode = true;
       this.handleEdit(id)
     }
   }
-  submitEdit(id){
+  submitEdit(id:Schema.Types.ObjectId){
       this.todoEditMode = false;
       this.handleEdit(id)
   }

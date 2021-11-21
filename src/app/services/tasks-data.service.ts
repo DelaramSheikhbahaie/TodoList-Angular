@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Todo } from '../models/todos';
 import { SenderService } from './sender.service';
+import { Schema } from 'mongoose';
 
 @Injectable({
   providedIn: 'root'
@@ -25,14 +26,14 @@ export class TasksDataService {
       (error) => console.log(error)
     )
   }
-  updateTodos(id , taskData : object){
-    this.http.put(this.url+`api/tasks/:${id}`, taskData).subscribe(
+  updateTodos(id:Schema.Types.ObjectId , taskData : object){
+    this.http.put(this.url+`api/tasks/${id}`, taskData).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
   }
-  deleteTodos(id){
-    this.http.delete(this.url+`api/tasks/:${id}`).subscribe(
+  deleteTodos(id:Schema.Types.ObjectId){
+    this.http.delete(this.url+`api/tasks/${id}`).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
@@ -50,20 +51,20 @@ export class TasksDataService {
       (error) => console.log(error)
     )
   }
-  updateList(id , listInfo : object){
-    this.http.put(this.url+'api/lists/:id', listInfo).subscribe(
+  updateList(id:Schema.Types.ObjectId , listInfo : object){
+    this.http.put(this.url+`api/lists/${id}`, listInfo).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
   }
-  deleteList(id){
-    this.http.delete(this.url+'api/lists/:id').subscribe(
+  deleteList(id:Schema.Types.ObjectId){
+    this.http.delete(this.url+`api/lists/${id}`).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
   }
-  findList(id){
-    this.http.get(this.url+`api/lists/:${id}`).subscribe(
+  findList(id:Schema.Types.ObjectId){
+    this.http.get(this.url+`api/lists/${id}`).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
