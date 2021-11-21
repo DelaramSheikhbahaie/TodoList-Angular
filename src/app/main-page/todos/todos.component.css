@@ -27,6 +27,9 @@
     justify-content: space-between;
     align-items: center;
 }
+.todos-info-done{
+    opacity: .5;
+}
 .todos-info span{
     display: flex;
     color: rgb(48, 48, 48);

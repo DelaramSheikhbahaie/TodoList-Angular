@@ -46,12 +46,6 @@ export class TodosComponent implements OnInit {
       if(id === todo._id) {
         todo.done = !todo.done
         this.todosInfo = document.getElementById(`todos-info-${id}`) as HTMLElement;
-        if(todo.done){
-          this.todosInfo.style.backgroundColor ="green"
-        }
-        else{
-          this.todosInfo.style.backgroundColor ="transparent"
-        }
         this.apiService.updateTodos(id , todo)
       }
     })

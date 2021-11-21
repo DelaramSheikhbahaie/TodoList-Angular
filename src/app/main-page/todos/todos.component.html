@@ -2,7 +2,7 @@
     <mat-list>
         <mat-list-item *ngFor="let todo of todos; let count = index" class="mat-list-item">
             <div class="todos-container">
-                <div id="todos-info-{{todo._id}}" class="todos-info">
+                <div id="todos-info-{{todo._id}}" class="todos-info" [ngClass]="todo.done ? 'todos-info-done' : ''">
                     <span>
                         <em class="todos-number">{{count + 1}}</em>
                         <strong >Title:</strong>
