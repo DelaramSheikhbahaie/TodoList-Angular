@@ -8,7 +8,6 @@ import {List} from '../../models/lists'
   styleUrls: ['./lists.component.css']
 })
 export class ListsComponent implements OnInit {
-
   lists:List[];
   ListTitleInput: HTMLElement;
   ListTitle: HTMLElement;
@@ -19,6 +18,7 @@ export class ListsComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.sharedLists.subscribe(list => this.lists = list)
+
   }
   deleteList (id){
     this.apiService.deleteList(id)
@@ -56,8 +56,8 @@ export class ListsComponent implements OnInit {
       this.ListEditMode = false;
       this.handleEdit(id)
   }
-  openList(id , name:string){
-    this.service.nextListInfo(id , name)
+  openList(list){
+    this.service.nextListInfo(list)
   }
 
 }

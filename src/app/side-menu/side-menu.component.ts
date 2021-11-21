@@ -20,11 +20,13 @@ export class SideMenuComponent implements OnInit {
     // this.service.updateList(this.allLists)
   }
   addList(){
+    // const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
     if(this.inputListName !== ""){
       this.listData={
-        title:this.inputListName 
-        , date:Date.now() 
-        , isMain:false
+        // _id:genRanHex(Math.random()) ,
+         title:this.inputListName, 
+         date:Date.now() ,
+         isMain:false
       }
       this.apiService.insertList(this.listData)
       this.service.displayListsUpdateBeforeRefresh(this.listData)

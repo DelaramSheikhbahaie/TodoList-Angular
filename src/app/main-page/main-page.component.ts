@@ -18,7 +18,7 @@ export class MainPageComponent implements OnInit {
     // this.service.sharedListID.subscribe(id => this.listId = id)
     this.route.paramMap.subscribe(params => this.listid = params.get('id'))
     this.service.sharedListName.subscribe(name => this.listName = name)
-    // this.apiService.findList(this.listid)
+    this.apiService.findList(this.listid)
   }
 
 }

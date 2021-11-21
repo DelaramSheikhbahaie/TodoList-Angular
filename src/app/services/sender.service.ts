@@ -8,7 +8,7 @@ import { Todo } from '../models/todos';
   providedIn: 'root'
 })
 export class SenderService {
-
+  
   private lists = new BehaviorSubject([{_id:0 ,title:"Daily Tasks" , date:"Date.now()" ,isMain:true} , {_id:1 ,title:"Compeleted Tasks", date:"Date.now()" , isMain:false}]);
   sharedLists = this.lists.asObservable();
 
@@ -21,11 +21,11 @@ export class SenderService {
   private TodoList = new BehaviorSubject([]);
   sharedTodoList = this.TodoList.asObservable();
 
-  constructor() { }
+  constructor() {}
 
-  nextListInfo(id: number , name:string) {
-    this.listID.next(id);
-    this.listName.next(name);
+  nextListInfo(item) {
+    this.listID.next(item._id);
+    this.listName.next(item.title);
   }
   updateList(list) {
     const currentValue = this.lists.value;

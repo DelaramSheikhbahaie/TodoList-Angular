@@ -66,7 +66,7 @@ export class TasksDataService {
   }
   findList(id:Schema.Types.ObjectId){
     this.http.get(this.url+`api/lists/${id}`).subscribe(
-      (response) => console.log(response),
+      (response) => this.senderService.nextListInfo(response),
       (error) => console.log(error)
     )
   }
