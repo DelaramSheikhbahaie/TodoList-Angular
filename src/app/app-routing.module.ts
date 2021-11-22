@@ -8,8 +8,7 @@ import { ListsComponent } from './side-menu/lists/lists.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/list/7f57bd2bc9259e055c44be9a', pathMatch: 'full' },
   { path: 'list/:id', component: HomeComponent },
 ];
 
