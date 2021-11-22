@@ -7,6 +7,7 @@
             name="inputListName"
             [(ngModel)] = "inputListName"
             autocomplete="off"
+            (keydown.enter)="addList()"
         />
     </mat-form-field>
     <button class="add-btn" (click)="addList()" mat-fab color="Basic">Add</button>
