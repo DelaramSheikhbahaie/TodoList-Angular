@@ -1,10 +1,11 @@
 <div class="sidenav-container">
     <h1>Other Lists</h1>
-    <mat-form-field>
-        <mat-label>List Name...</mat-label>
+    <mat-form-field appearance="fill" >
+        <mat-label class="input-label">List Name...</mat-label>
         <input matInput
             type="text"
             name="inputListName"
+            class="list-input"
             [(ngModel)] = "inputListName"
             autocomplete="off"
             (keydown.enter)="addList()"
