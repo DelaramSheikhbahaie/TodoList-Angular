@@ -1,88 +1,89 @@
 import { Injectable } from '@angular/core';
-import { retry, catchError } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Todo } from '../models/todos';
 import { SenderService } from './sender.service';
 import { Schema } from 'mongoose';
-import { send } from 'process';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TasksDataService {
-  url:String ="http://localhost:3000/";
-  todos:any;
+  baseUrl: String = 'http://localhost:3000/';
+  todos: any;
 
-  constructor(private http:HttpClient, private senderService:SenderService ) {}
-  getAllTasks(){
-    this.http.get(this.url+'api/tasks').subscribe(
-      (response) => {this.senderService.updateTodoList(response); console.log(response)},
-      (error) => console.log(error)
-    )
+  constructor(private http: HttpClient, private senderService: SenderService) {}
+  insertTask(taskData: object, id) {
+    this.http.post(this.baseUrl + 'api/tasks', taskData).subscribe({
+      next: (response) => this.findTaskByListId(id),
+      error: (err) => console.log(err),
+    });
   }
-  insertTask(taskData : object , id){
-    this.http.post(this.url+'api/tasks', taskData).subscribe(
-      (response) => {
-        this.findTaskByListId(id)
+
+  updateTodos(id, taskData: object) {
+    this.http.put(this.baseUrl + `api/tasks/${id}`, taskData).subscribe({
+      next: (response) => console.log(response),
+      error: (err) => console.log(err),
+    });
+  }
+
+  deleteTodos(id: Schema.Types.ObjectId) {
+    this.http.delete(this.baseUrl + `api/tasks/${id}`).subscribe({
+      next: (response) => console.log(response),
+      error: (err) => console.log(err),
+    });
+  }
+
+  findTaskByListId(id) {
+    this.http.get(this.baseUrl + `api/tasks/query/${id}`).subscribe({
+      next: (response) => {
+        this.senderService.updateTodoList(response);
+        console.log(response);
       },
-      (error) => console.log(error)
-    )
-  }
-  updateTodos(id , taskData : object){
-    this.http.put(this.url+`api/tasks/${id}`, taskData).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    )
-  }
-  deleteTodos(id:Schema.Types.ObjectId){
-    this.http.delete(this.url+`api/tasks/${id}`).subscribe(
-      (response) => {console.log(response)},
-      (error) => console.log(error)
-    )
-  }
-  findTaskByListId(id){
-    this.http.get(this.url+`api/tasks/query/${id}`).subscribe(
-      (response) => {this.senderService.updateTodoList(response) ; console.log(response)},
-      (error) => console.log(error)
-    )
-  }
-  compeletedList(){
-    this.http.get(this.url+'api/compeleted').subscribe(
-      (response) => {this.senderService.updateTodoList(response); console.log(response)},
-      (error) => console.log(error)
-    )
-  }
-  
-  getAllLists(){
-    this.http.get(this.url+'api/lists').subscribe(
-      (response) => {this.senderService.updateList(response);},
-      (error) => console.log(error)
-    )
-  }
-  insertList(listData : object){
-    this.http.post(this.url+'api/lists', listData).subscribe(
-      (response) => {this.getAllLists()},
-      (error) => console.log(error)
-    )
-  }
-  updateList(id:Schema.Types.ObjectId , listInfo : object){
-    this.http.put(this.url+`api/lists/${id}`, listInfo).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    )
-  }
-  deleteList(id:Schema.Types.ObjectId){
-    this.http.delete(this.url+`api/lists/${id}`).subscribe(
-      (response) => {console.log(response)},
-      (error) => console.log(error)
-    )
-  }
-  findList(id:Schema.Types.ObjectId){
-    this.http.get(this.url+`api/lists/${id}`).subscribe(
-      (response) => this.senderService.nextListInfo(response),
-      (error) => console.log(error)
-    )
-  }
+      error: (err) => console.log(err),
+    });
   }
 
+  compeletedList() {
+    this.http.get(this.baseUrl + 'api/compeleted').subscribe({
+      next: (response) => {
+        this.senderService.updateTodoList(response);
+        console.log(response);
+      },
+      error: (err) => console.log(err),
+    });
+  }
+
+  getAllLists() {
+    this.http.get(this.baseUrl + 'api/lists').subscribe({
+      next: (response) => this.senderService.updateList(response),
+      error: (err) => console.log(err),
+    });
+  }
+
+  insertList(listData: object) {
+    this.http.post(this.baseUrl + 'api/lists', listData).subscribe({
+      next: (response) => this.getAllLists(),
+      error: (err) => console.log(err),
+    });
+  }
+
+  updateList(id: Schema.Types.ObjectId, listInfo: object) {
+    this.http.put(this.baseUrl + `api/lists/${id}`, listInfo).subscribe({
+      next: (response) => console.log(response),
+      error: (err) => console.log(err),
+    });
+  }
+
+  deleteList(id: Schema.Types.ObjectId) {
+    this.http.delete(this.baseUrl + `api/lists/${id}`).subscribe({
+      next: (response) => console.log(response),
+      error: (err) => console.log(err),
+    });
+  }
+
+  findList(id: Schema.Types.ObjectId) {
+    this.http.get(this.baseUrl + `api/lists/${id}`).subscribe({
+      next: (response) => this.senderService.nextListInfo(response),
+      error: (err) => console.log(err),
+    });
+  }
+}

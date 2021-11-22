@@ -26,6 +26,9 @@
 }
 .side-toggle-button{
     position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 190px; 
 }
 @media only screen and (max-width: 840px){
     .mat-sidenav{
