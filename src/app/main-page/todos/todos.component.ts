@@ -42,7 +42,7 @@ export class TodosComponent implements OnInit {
       this.apiService.findTaskByListId(this.listId)
     } 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => this.listID = params.get('id'))
+    // this.route.paramMap.subscribe(params => this.listID = params.get('id'))
     this.apiService.getAllTasks()
     this.service.sharedTodoList.subscribe(
       todoList => this.todos = todoList)

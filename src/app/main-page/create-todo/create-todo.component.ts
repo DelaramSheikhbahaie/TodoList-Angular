@@ -47,10 +47,10 @@ export class CreateTodoComponent implements OnInit {
         description:this.descriptionInput,
         done:false ,
         isDaily : this.isDaily,
-        list:{type:this.listId , ref:"List"}
+        // list:{type:this.listId , ref:"List"}
       }
       this.apiService.insertTask(this.taskData)
-      this.service.displayTodosUpdateBeforeRefresh(this.taskData)
+      // this.service.displayTodosUpdateBeforeRefresh(this.taskData)
       // console.log(this.dateInput.slice(3,11))
       this.contentInput="";
       this.dateInput="";

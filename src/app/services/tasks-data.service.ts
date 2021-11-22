@@ -17,13 +17,15 @@ export class TasksDataService {
   constructor(private http:HttpClient, private senderService:SenderService ) {}
   getAllTasks(){
     this.http.get(this.url+'api/tasks').subscribe(
-      (response) => {this.senderService.updateTodoList(response)},
+      (response) => {this.senderService.updateTodoList(response); console.log(response)},
       (error) => console.log(error)
     )
   }
   insertTask(taskData : object){
     this.http.post(this.url+'api/tasks', taskData).subscribe(
-      (response) => {console.log(response)},
+      (response) => {
+        this.getAllTasks()
+      },
       (error) => console.log(error)
     )
   }
@@ -35,7 +37,7 @@ export class TasksDataService {
   }
   deleteTodos(id:Schema.Types.ObjectId){
     this.http.delete(this.url+`api/tasks/${id}`).subscribe(
-      (response) => {this.senderService.removeDeletedTodosBeforeRefresh(response)},
+      (response) => {this.getAllTasks()},
       (error) => console.log(error)
     )
   }
@@ -54,7 +56,7 @@ export class TasksDataService {
   }
   insertList(listData : object){
     this.http.post(this.url+'api/lists', listData).subscribe(
-      (response) => {console.log(response)},
+      (response) => {this.getAllLists()},
       (error) => console.log(error)
     )
   }
@@ -66,7 +68,7 @@ export class TasksDataService {
   }
   deleteList(id:Schema.Types.ObjectId){
     this.http.delete(this.url+`api/lists/${id}`).subscribe(
-      (response) => {this.senderService.removeDeletedListsBeforeRefresh(response)},
+      (response) => {this.getAllLists()},
       (error) => console.log(error)
     )
   }
