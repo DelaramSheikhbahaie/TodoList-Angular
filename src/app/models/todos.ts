@@ -7,5 +7,5 @@ export class Todo {
     description:string;
     done:boolean;
     isDaily:boolean;
-    list:{type:Schema.Types.ObjectId , ref:'List'}
+    list:Schema.Types.ObjectId
 }

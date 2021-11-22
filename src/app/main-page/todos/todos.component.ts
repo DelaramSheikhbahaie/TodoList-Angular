@@ -42,13 +42,9 @@ export class TodosComponent implements OnInit {
       this.apiService.findTaskByListId(this.listId)
     } 
   ngOnInit(): void {
-    // this.route.paramMap.subscribe(params => this.listID = params.get('id'))
-    this.apiService.getAllTasks()
+    this.route.paramMap.subscribe(params => this.listID = params.get('id'))
     this.service.sharedTodoList.subscribe(
       todoList => this.todos = todoList)
-      // .filter(
-      //   todo=>todo.listId === this.listID)
-      // )
   }
   toggleDone (id:Schema.Types.ObjectId){
     this.todos.map((todo)=>{
@@ -123,6 +119,6 @@ export class TodosComponent implements OnInit {
   }
   moveToDailyList(todo){
     todo.isMain = true
-    this.apiService.insertTask(todo)
+    this.apiService.insertTask(todo , this.listId)
   }
 }

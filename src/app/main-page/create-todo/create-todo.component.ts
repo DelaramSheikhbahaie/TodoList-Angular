@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Todo } from 'src/app/models/todos';
 import { TasksDataService } from 'src/app/services/tasks-data.service';
 import { SenderService } from '../../services/sender.service';
 
@@ -10,9 +11,9 @@ import { SenderService } from '../../services/sender.service';
 })
 export class CreateTodoComponent implements OnInit {
 
-  contentInput:String;
-  dateInput:String;
-  descriptionInput:String;
+  contentInput:string;
+  dateInput:string;
+  descriptionInput:string;
   isDaily:boolean
   listId;
   listName:string;
@@ -47,9 +48,9 @@ export class CreateTodoComponent implements OnInit {
         description:this.descriptionInput,
         done:false ,
         isDaily : this.isDaily,
-        // list:{type:this.listId , ref:"List"}
+        list:this.listId 
       }
-      this.apiService.insertTask(this.taskData)
+      this.apiService.insertTask(this.taskData , this.listId)
       // this.service.displayTodosUpdateBeforeRefresh(this.taskData)
       // console.log(this.dateInput.slice(3,11))
       this.contentInput="";

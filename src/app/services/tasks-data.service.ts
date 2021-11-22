@@ -21,10 +21,10 @@ export class TasksDataService {
       (error) => console.log(error)
     )
   }
-  insertTask(taskData : object){
+  insertTask(taskData : object , id){
     this.http.post(this.url+'api/tasks', taskData).subscribe(
       (response) => {
-        this.getAllTasks()
+        this.findTaskByListId(id)
       },
       (error) => console.log(error)
     )
