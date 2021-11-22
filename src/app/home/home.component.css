@@ -16,6 +16,12 @@
 }
 .main-toggle-button{
     position: absolute;
+    left: 44%;
+    top: 215px;
+    width: 210px;
+    padding: 5px 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #210838;
 }
 .side-toggle-button{
     position: absolute;
