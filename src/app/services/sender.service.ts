@@ -38,8 +38,9 @@ export class SenderService {
     const updatedValue = currentValue.concat(list)
     this.lists.next(updatedValue);
   }
-  updateTodoList(todoList) {
+  updateTodoList(todoList:any) {
     this.TodoList.next(todoList);
+    console.log(todoList)
   }
   removeDeletedListsBeforeRefresh(item){
     const lists = this.lists.value;

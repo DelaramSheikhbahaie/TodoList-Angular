@@ -49,8 +49,7 @@ export class TodosComponent implements OnInit {
     this.dailyListId = this.service.DailyListID
     this.compeletedListId = this.service.CompeletedListID
     this.route.paramMap.subscribe(params => this.listID = params.get('id'))
-    this.service.sharedTodoList.subscribe(
-      todoList => this.todos = todoList)
+    this.service.sharedTodoList.subscribe(todoList => this.todos = todoList)
   }
   toggleDone (id:Schema.Types.ObjectId){
     this.todos.map((todo)=>{
