@@ -54,6 +54,7 @@ export class TodosComponent implements OnInit {
     this.todos.map((todo)=>{
       if(id === todo._id) {
         todo.done = !todo.done
+        todo.list = this.compeletedListId
         this.todosInfo = document.getElementById(`todos-info-${id}`) as HTMLElement;
         this.apiService.updateTodos(id , todo)
       }

@@ -9,7 +9,7 @@
                 (keydown.enter) ="submitEdit(list._id)"
         />
     </a>
-        <span *ngIf="!list.isMain" class="buttons-section">
+        <span *ngIf="!list.isMain && list._id !=compeletedListId" class="buttons-section">
             <button 
                 class="edit-btn" 
                 (click)="switchToEditMode(list._id)"

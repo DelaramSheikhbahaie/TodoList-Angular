@@ -9,6 +9,7 @@ import {List} from '../../models/lists'
 })
 export class ListsComponent implements OnInit {
   lists:List[];
+  compeletedListId:any
   ListTitleInput: HTMLElement;
   ListTitle: HTMLElement;
   NameEditInput:string;
@@ -17,8 +18,8 @@ export class ListsComponent implements OnInit {
   constructor(private service:SenderService , private apiService:TasksDataService) { }
 
   ngOnInit(): void {
+    this.compeletedListId = this.service.CompeletedListID
     this.service.sharedLists.subscribe(list => this.lists = list)
-
   }
   deleteList (id){
     this.apiService.deleteList(id)
