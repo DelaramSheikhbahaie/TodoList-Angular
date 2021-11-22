@@ -10,7 +10,7 @@ import { TasksDataService } from '../services/tasks-data.service';
 })
 export class MainPageComponent implements OnInit {
 
-  listId;
+  listId:any;
   listName:string;
   constructor(private service : SenderService ,private apiService:TasksDataService , private route :ActivatedRoute) { }
 
