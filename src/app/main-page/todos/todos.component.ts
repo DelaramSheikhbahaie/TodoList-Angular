@@ -69,6 +69,7 @@ export class TodosComponent implements OnInit {
   }
   deleteTodo (id:Schema.Types.ObjectId){
     this.apiService.deleteTodos(id)
+    this.openSnackBar("Task Deleted" , "Dismiss")
   }
   handleEdit(id:Schema.Types.ObjectId){
     this.todos.map((todo)=>{
