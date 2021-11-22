@@ -39,19 +39,17 @@ export class CreateTodoComponent implements OnInit {
   }
 
   addTodo(){
-    if(this.contentInput !== "" ){
-      // && this.dateInput !== "" && this.descriptionInput !== ""
+    if(this.contentInput !== "" && this.dateInput !== "" && this.descriptionInput !== "" ){
       this.listName == "Daily Tasks" ? this.isDaily = true : this.isDaily = false
       this.taskData = {
         title:this.contentInput ,
-        date:this.dateInput ,
+        date:this.dateInput,
         description:this.descriptionInput,
         done:false ,
         isDaily : this.isDaily,
         list:this.listId 
       }
       this.apiService.insertTask(this.taskData , this.listId)
-      // console.log(this.dateInput.slice(3,11))
       this.contentInput="";
       this.dateInput="";
       this.descriptionInput=""

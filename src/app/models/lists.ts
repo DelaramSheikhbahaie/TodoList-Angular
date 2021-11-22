@@ -1,13 +1,6 @@
-// var mongoose = require('mongoose')
-//   , Schema = mongoose.Schema
 export class List {
-    _id;
+    _id :any;
     title: string;
-    date: string;
+    date: any;
     isMain: Boolean;
-    // ListModel = mongoose.model('List', Schema({
-    //     title: String,
-    //     date: String,
-    //     isMain: Boolean
-    // }))
 }

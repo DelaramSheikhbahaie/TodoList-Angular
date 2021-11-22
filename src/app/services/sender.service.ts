@@ -15,7 +15,7 @@ export class SenderService {
   DailyListID ='7f57bd2bc9259e055c44be9a'
   CompeletedListID = '8ed2864ab14f980a6b47bbb9'
   
-  private lists = new BehaviorSubject([{_id:this.DailyListID ,title:"Daily Tasks" , date:"Date.now()" ,isMain:true} , {_id:this.CompeletedListID ,title:"Compeleted Tasks", date:"Date.now()" , isMain:false , isCompeleted:true}]);
+  private lists = new BehaviorSubject([{_id:this.DailyListID ,title:"Daily Tasks" , date:Date.now() ,isMain:true} , {_id:this.CompeletedListID ,title:"Compeleted Tasks", date:Date.now() , isMain:false}]);
   sharedLists = this.lists.asObservable();
 
   private listID = new BehaviorSubject(0);
@@ -27,7 +27,7 @@ export class SenderService {
   private TodoList = new BehaviorSubject([]);
   sharedTodoList = this.TodoList.asObservable();
 
-  nextListInfo(item) {
+  nextListInfo(item:any) {
     var id:any;
     this.route.paramMap.subscribe(params => id = params.get('id'))
     this.listID.next(id);

@@ -37,7 +37,7 @@ export class TasksDataService {
   }
   deleteTodos(id:Schema.Types.ObjectId){
     this.http.delete(this.url+`api/tasks/${id}`).subscribe(
-      (response) => {this.findTaskByListId(id)},
+      (response) => {console.log(response)},
       (error) => console.log(error)
     )
   }
