@@ -1,9 +1,10 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Mongoose, Schema } from 'mongoose';
+import { Schema } from 'mongoose';
 import { Todo } from 'src/app/models/todos';
 import { SenderService } from 'src/app/services/sender.service';
 import { TasksDataService } from 'src/app/services/tasks-data.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-todos',
@@ -33,7 +34,8 @@ export class TodosComponent implements OnInit {
   constructor(
      private service:SenderService ,
      private apiService :TasksDataService ,
-     private route :ActivatedRoute
+     private route :ActivatedRoute ,
+     private snackBar: MatSnackBar
     ) {}
 
     get listID(): string {
@@ -57,10 +59,14 @@ export class TodosComponent implements OnInit {
         todo.list = this.compeletedListId
         this.todosInfo = document.getElementById(`todos-info-${id}`) as HTMLElement;
         this.apiService.updateTodos(id , todo)
+        if(todo.done)
+          this.openSnackBar("Moved to Compeleted Tasks list" , "Dismiss")
       }
     })
   }
-
+  openSnackBar(message:string , action) {
+    this.snackBar.open(message , action , {duration :2000});
+  }
   deleteTodo (id:Schema.Types.ObjectId){
     this.apiService.deleteTodos(id)
   }
@@ -125,5 +131,6 @@ export class TodosComponent implements OnInit {
   moveToDailyList(todo){
     todo.list = this.dailyListId
     this.apiService.updateTodos(todo._id ,todo)
+    this.openSnackBar("Moved to Daily Tasks list" , "Dismiss")
   }
 }
