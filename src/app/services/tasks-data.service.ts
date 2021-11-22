@@ -47,6 +47,12 @@ export class TasksDataService {
       (error) => console.log(error)
     )
   }
+  compeletedList(){
+    this.http.get(this.url+'api/compeleted').subscribe(
+      (response) => {this.senderService.updateTodoList(response); console.log(response)},
+      (error) => console.log(error)
+    )
+  }
   
   getAllLists(){
     this.http.get(this.url+'api/lists').subscribe(

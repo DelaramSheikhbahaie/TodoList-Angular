@@ -43,7 +43,10 @@ export class TodosComponent implements OnInit {
     }
     set listID(value: string) {
       this.listId = value ;
-      this.apiService.findTaskByListId(this.listId)
+      if(value == this.compeletedListId)
+        this.apiService.compeletedList()
+      else
+        this.apiService.findTaskByListId(this.listId)
     } 
   ngOnInit(): void {
     this.dailyListId = this.service.DailyListID
