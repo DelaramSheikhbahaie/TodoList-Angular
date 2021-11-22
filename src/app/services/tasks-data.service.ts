@@ -39,6 +39,12 @@ export class TasksDataService {
       (error) => console.log(error)
     )
   }
+  findTaskByListId(id){
+    this.http.get(this.url+`api/tasks/query/${id}`).subscribe(
+      (response) => {this.senderService.updateTodoList(response) ; console.log(response)},
+      (error) => console.log(error)
+    )
+  }
   
   getAllLists(){
     this.http.get(this.url+'api/lists').subscribe(

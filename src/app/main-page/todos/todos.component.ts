@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Mongoose, Schema } from 'mongoose';
 import { Todo } from 'src/app/models/todos';
 import { SenderService } from 'src/app/services/sender.service';
@@ -13,7 +14,7 @@ export class TodosComponent implements OnInit {
 
   todos:Todo[];
   inputTodos:string = "";
-  listid;
+  listId:any;
   todoEditMode:boolean = false;
   titleEditInput:string;
   dateEditInput:string;
@@ -30,10 +31,18 @@ export class TodosComponent implements OnInit {
   constructor(
      private service:SenderService ,
      private apiService :TasksDataService ,
+     private route :ActivatedRoute
     ) {}
 
+    get listID(): string {
+      return this.listId;
+    }
+    set listID(value: string) {
+      this.listId = value ;
+      this.apiService.findTaskByListId(this.listId)
+    } 
   ngOnInit(): void {
-    // this.service.sharedListID.subscribe(id => this.listID = id)
+    this.route.paramMap.subscribe(params => this.listID = params.get('id'))
     this.apiService.getAllTasks()
     this.service.sharedTodoList.subscribe(
       todoList => this.todos = todoList)

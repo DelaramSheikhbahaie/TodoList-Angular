@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TasksDataService } from 'src/app/services/tasks-data.service';
 import { SenderService } from '../../services/sender.service';
-// var mongoose = require('mongoose')
-//   , Schema = mongoose.Schema
 
 @Component({
   selector: 'app-create-todo',
@@ -15,14 +14,26 @@ export class CreateTodoComponent implements OnInit {
   dateInput:String;
   descriptionInput:String;
   isDaily:boolean
-  listid;
+  listId;
   listName:string;
   taskData:object
   
-  constructor(private service:SenderService , private apiService : TasksDataService) { }
+  constructor(
+     private service:SenderService ,
+     private apiService : TasksDataService,
+     private route :ActivatedRoute,
+     ) { }
+
+     get listID(): string {
+      return this.listId;
+    }
+    set listID(value: string) {
+      this.listId = value ;
+    } 
 
   ngOnInit(): void {
     // this.service.sharedListID.subscribe(id => this.listId =id)
+    this.route.paramMap.subscribe(params => this.listID = params.get('id'))
     this.service.sharedListName.subscribe(name => this.listName = name)
   }
 
@@ -36,7 +47,7 @@ export class CreateTodoComponent implements OnInit {
         description:this.descriptionInput,
         done:false ,
         isDaily : this.isDaily,
-        // list:{type:Schema.ObjectId , ref:"List"}
+        list:{type:this.listId , ref:"List"}
       }
       this.apiService.insertTask(this.taskData)
       this.service.displayTodosUpdateBeforeRefresh(this.taskData)

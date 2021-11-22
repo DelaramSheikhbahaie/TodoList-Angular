@@ -10,15 +10,15 @@ import { TasksDataService } from '../services/tasks-data.service';
 })
 export class MainPageComponent implements OnInit {
 
-  listid;
+  listId;
   listName:string;
   constructor(private service : SenderService ,private apiService:TasksDataService , private route :ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => this.listId = params.get('id'))
     // this.service.sharedListID.subscribe(id => this.listId = id)
-    this.route.paramMap.subscribe(params => this.listid = params.get('id'))
     this.service.sharedListName.subscribe(name => this.listName = name)
-    this.apiService.findList(this.listid)
+    this.apiService.findList(this.listId)
   }
 
 }
