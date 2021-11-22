@@ -15,6 +15,8 @@ export class TodosComponent implements OnInit {
   todos:Todo[];
   inputTodos:string = "";
   listId:any;
+  dailyListId:any
+  compeletedListId:any
   todoEditMode:boolean = false;
   titleEditInput:string;
   dateEditInput:string;
@@ -42,6 +44,8 @@ export class TodosComponent implements OnInit {
       this.apiService.findTaskByListId(this.listId)
     } 
   ngOnInit(): void {
+    this.dailyListId = this.service.DailyListID
+    this.compeletedListId = this.service.CompeletedListID
     this.route.paramMap.subscribe(params => this.listID = params.get('id'))
     this.service.sharedTodoList.subscribe(
       todoList => this.todos = todoList)
@@ -118,7 +122,7 @@ export class TodosComponent implements OnInit {
       this.handleEdit(id)
   }
   moveToDailyList(todo){
-    todo.isMain = true
-    this.apiService.insertTask(todo , this.listId)
+    todo.list = this.dailyListId
+    this.apiService.updateTodos(todo._id ,todo)
   }
 }

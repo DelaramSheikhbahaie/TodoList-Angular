@@ -29,7 +29,7 @@ export class TasksDataService {
       (error) => console.log(error)
     )
   }
-  updateTodos(id:Schema.Types.ObjectId , taskData : object){
+  updateTodos(id , taskData : object){
     this.http.put(this.url+`api/tasks/${id}`, taskData).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)

@@ -37,7 +37,7 @@
                 </div>
                 <div class="todos-buttons">
                     <button 
-                        *ngIf="todo.isDaily"
+                        *ngIf="todo.list != dailyListId"
                         class="edit-btn" 
                         (click) ="moveToDailyList(todo)" 
                         mat-icon-button

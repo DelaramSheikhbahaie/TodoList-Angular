@@ -8,11 +8,14 @@ import { Todo } from '../models/todos';
 @Injectable({
   providedIn: 'root'
 })
-
+  
 export class SenderService {
   constructor(private route :ActivatedRoute){}
   
-  private lists = new BehaviorSubject([{_id:'7f57bd2bc9259e055c44be9a' ,title:"Daily Tasks" , date:"Date.now()" ,isMain:true} , {_id:'8ed2864ab14f980a6b47bbb9' ,title:"Compeleted Tasks", date:"Date.now()" , isMain:false , isCompeleted:true}]);
+  DailyListID ='7f57bd2bc9259e055c44be9a'
+  CompeletedListID = '8ed2864ab14f980a6b47bbb9'
+  
+  private lists = new BehaviorSubject([{_id:this.DailyListID ,title:"Daily Tasks" , date:"Date.now()" ,isMain:true} , {_id:this.CompeletedListID ,title:"Compeleted Tasks", date:"Date.now()" , isMain:false , isCompeleted:true}]);
   sharedLists = this.lists.asObservable();
 
   private listID = new BehaviorSubject(0);

@@ -41,7 +41,7 @@ export class CreateTodoComponent implements OnInit {
   addTodo(){
     if(this.contentInput !== "" ){
       // && this.dateInput !== "" && this.descriptionInput !== ""
-      this.listName == "Daily Tasks List" ? this.isDaily = true : this.isDaily = false
+      this.listName == "Daily Tasks" ? this.isDaily = true : this.isDaily = false
       this.taskData = {
         title:this.contentInput ,
         date:this.dateInput ,
