@@ -13,8 +13,7 @@ export class SenderService {
 
   DailyListID = '7f57bd2bc9259e055c44be9a';
   CompeletedListID = '8ed2864ab14f980a6b47bbb9';
-
-  private lists = new BehaviorSubject([
+  defaultList = [
     {
       _id: this.DailyListID,
       title: 'Daily Tasks',
@@ -27,7 +26,9 @@ export class SenderService {
       date: Date.now(),
       isMain: false,
     },
-  ]);
+  ];
+
+  private lists = new BehaviorSubject([]);
   sharedLists = this.lists.asObservable();
 
   private listID = new BehaviorSubject(0);
@@ -47,17 +48,11 @@ export class SenderService {
   }
 
   updateList(list) {
-    const currentValue = this.lists.value;
-    const updatedValue = currentValue.concat(list);
+    const updatedValue = this.defaultList.concat(list);
     this.lists.next(updatedValue);
   }
+
   updateTodoList(todoList: any) {
     this.TodoList.next(todoList);
-    console.log(todoList);
-  }
-  removeDeletedListsBeforeRefresh(item) {
-    const lists = this.lists.value;
-    const updatedValue = lists.filter((list) => list._id != item._id);
-    this.lists.next(updatedValue);
   }
 }

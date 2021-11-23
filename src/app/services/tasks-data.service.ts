@@ -76,7 +76,7 @@ export class TasksDataService {
 
   deleteList(id: Schema.Types.ObjectId) {
     this.http.delete(this.baseUrl + `api/lists/${id}`).subscribe({
-      next: (response) => console.log(response),
+      next: (response) => this.getAllLists(),
       error: (err) => console.log(err),
     });
   }
