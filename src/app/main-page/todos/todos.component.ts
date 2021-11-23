@@ -64,7 +64,7 @@ export class TodosComponent implements OnInit {
         this.todosInfo = document.getElementById(
           `todos-info-${id}`
         ) as HTMLElement;
-        this.apiService.updateTodos(todo , this.listID);
+        this.apiService.updateTodos(todo, this.listID);
         if (todo.done)
           this.openSnackBar('Moved to Compeleted Tasks list', 'Dismiss');
       }
@@ -76,7 +76,7 @@ export class TodosComponent implements OnInit {
   }
 
   deleteTodo(id: Schema.Types.ObjectId) {
-    this.apiService.deleteTodos(id , this.listID);
+    this.apiService.deleteTodos(id, this.listID);
     this.openSnackBar('Task Deleted', 'Dismiss');
   }
 
@@ -87,8 +87,8 @@ export class TodosComponent implements OnInit {
       this.changeStyleOnEdit(todo._id, todo);
     }
   }
-  
-  cancleEdit(todo){
+
+  cancleEdit(todo) {
     this.todoEditMode = false;
     this.changeStyleOnEdit(todo._id, todo);
   }
@@ -96,11 +96,10 @@ export class TodosComponent implements OnInit {
   submitEdit(todo) {
     this.todoEditMode = false;
     this.changeStyleOnEdit(todo._id, todo);
-    this.apiService.updateTodos(todo ,this.listID);
+    this.apiService.updateTodos(todo, this.listID);
   }
 
   changeStyleOnEdit(id: Schema.Types.ObjectId, todo) {
-    
     this.ItemTitle = document.getElementById(`title-${id}`) as HTMLElement;
     this.ItemTitleInput = document.getElementById(
       `title-${id}-input`
@@ -148,7 +147,7 @@ export class TodosComponent implements OnInit {
       this.dateEditInput = '';
     }
   }
-  
+
   moveToDailyList(todo) {
     todo.list = this.dailyListId;
     this.apiService.updateTodos(todo, this.listID);

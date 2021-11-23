@@ -8,6 +8,7 @@ import { TasksDataService } from '../services/tasks-data.service';
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.css'],
 })
+
 export class SideMenuComponent implements OnInit {
   inputListName: string;
   allLists: [];
@@ -22,11 +23,11 @@ export class SideMenuComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.getAllLists();
   }
-  
-  getErrorMessage(){
-    return this.input.hasError('required') ? 'You must enter a value' :''
+
+  getErrorMessage() {
+    return this.input.hasError('required') ? 'You must enter a value' : '';
   }
-  
+
   addList() {
     if (this.inputListName !== '') {
       this.listData = {

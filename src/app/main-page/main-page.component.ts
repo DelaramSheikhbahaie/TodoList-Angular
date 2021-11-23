@@ -8,6 +8,7 @@ import { TasksDataService } from '../services/tasks-data.service';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css'],
 })
+
 export class MainPageComponent implements OnInit {
   listId: any;
   listName: string;

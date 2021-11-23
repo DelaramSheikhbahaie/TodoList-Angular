@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 import { SenderService } from 'src/app/services/sender.service';
 import { TasksDataService } from 'src/app/services/tasks-data.service';
 import { List } from '../../models/lists';
+
 @Component({
   selector: 'app-lists',
   templateUrl: './lists.component.html',
@@ -24,10 +24,11 @@ export class ListsComponent implements OnInit {
     this.compeletedListId = this.service.CompeletedListID;
     this.service.sharedLists.subscribe((list) => (this.lists = list));
   }
+
   deleteList(id) {
     this.apiService.deleteList(id);
   }
-  
+
   switchToEditMode(list) {
     if (!this.ListEditMode) {
       //edit only one item at the time
@@ -35,12 +36,14 @@ export class ListsComponent implements OnInit {
       this.changeStyleOnEdit(list._id, list);
     }
   }
+
   submitEdit(list) {
     this.ListEditMode = false;
     this.changeStyleOnEdit(list._id, list);
     this.apiService.updateList(list._id, list);
   }
-  cancleEdit(list){
+
+  cancleEdit(list) {
     this.ListEditMode = false;
     this.changeStyleOnEdit(list._id, list);
   }
@@ -62,6 +65,7 @@ export class ListsComponent implements OnInit {
       this.NameEditInput = '';
     }
   }
+  
   openList(list) {
     this.service.nextListInfo(list);
   }
