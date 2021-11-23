@@ -45,7 +45,7 @@ export class SenderService {
     this.TodoList.next(todoList);
   }
 
-  setDailyListId(list){
-    this.DailyListID.next(list._id)
+  setDailyListId(list) {
+    this.DailyListID.next(list._id);
   }
 }

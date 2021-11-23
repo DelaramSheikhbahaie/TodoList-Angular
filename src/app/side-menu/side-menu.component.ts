@@ -7,7 +7,6 @@ import { TasksDataService } from '../services/tasks-data.service';
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.css'],
 })
-
 export class SideMenuComponent implements OnInit {
   inputListName: string;
   allLists: [];
@@ -20,7 +19,6 @@ export class SideMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService.mainList();
-    // this.apiService.getAllLists();
   }
 
   addList() {

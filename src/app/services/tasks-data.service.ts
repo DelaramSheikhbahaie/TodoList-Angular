@@ -20,10 +20,12 @@ export class TasksDataService {
   }
 
   updateTodos(taskData, listId) {
-    this.http.put(this.baseUrl + `api/tasks/${taskData._id}`, taskData).subscribe({
-      next: (response) => this.findTaskByListId(listId),
-      error: (err) => console.log(err),
-    });
+    this.http
+      .put(this.baseUrl + `api/tasks/${taskData._id}`, taskData)
+      .subscribe({
+        next: (response) => this.findTaskByListId(listId),
+        error: (err) => console.log(err),
+      });
   }
 
   deleteTodos(id: Schema.Types.ObjectId, listId) {
@@ -89,7 +91,10 @@ export class TasksDataService {
   }
   mainList() {
     this.http.get(this.baseUrl + `api/mainList`).subscribe({
-      next: (response) => {this.getAllLists(); this.senderService.setDailyListId(response)},
+      next: (response) => {
+        this.getAllLists();
+        this.senderService.setDailyListId(response);
+      },
       error: (err) => console.log(err),
     });
   }
