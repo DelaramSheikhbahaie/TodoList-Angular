@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { SenderService } from 'src/app/services/sender.service';
 import { TasksDataService } from 'src/app/services/tasks-data.service';
 import { List } from '../../models/lists';
@@ -14,7 +15,6 @@ export class ListsComponent implements OnInit {
   ListTitle: HTMLElement;
   NameEditInput: string;
   ListEditMode: boolean = false;
-
   constructor(
     private service: SenderService,
     private apiService: TasksDataService

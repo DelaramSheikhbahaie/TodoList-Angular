@@ -3,6 +3,7 @@
     <mat-form-field appearance="fill" >
         <mat-label class="input-label">List Name...</mat-label>
         <input matInput
+        required
             type="text"
             name="inputListName"
             class="list-input"
@@ -10,6 +11,7 @@
             autocomplete="off"
             (keydown.enter)="addList()"
         />
+        <mat-error class="error-message" *ngIf="input.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
     <button class="add-btn" (click)="addList()" mat-fab color="Basic">Add</button>
    <app-lists></app-lists> 

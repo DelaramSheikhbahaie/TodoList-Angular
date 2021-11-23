@@ -7,6 +7,9 @@
     margin-bottom: 30px;
     width: 70% !important;
 }
+.error-message{
+    color:rgb(252, 124, 101);
+}
 .list-input{
     caret-color: rgba(255, 255, 255, 0.4);
     font-size: 20px;
