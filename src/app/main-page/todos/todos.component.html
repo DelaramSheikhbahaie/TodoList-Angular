@@ -1,90 +1,89 @@
-<!-- <button routerLink="/create-todo" class="add-btn" mat-raised-button>Add Todo</button> -->
-    <mat-list>
-        <mat-list-item *ngFor="let todo of todos; let count = index" class="mat-list-item">
-            <div class="todos-container">
-                <div id="todos-info-{{todo._id}}" class="todos-info" [ngClass]="todo.done ? 'todos-info-done' : ''">
-                    <span>
-                        <em class="todos-number">{{count + 1}}</em>
-                        <strong >Title:</strong>
-                        <p id="title-{{todo._id}}" >{{todo.title}}</p>
-                        <input id="title-{{todo._id}}-input"
-                                class="todos-edit-input"
-                                value="{{todo.title}}"
-                                [(ngModel)] ="titleEditInput"
-                                (keydown.enter) = "submitEdit(todo)"
-                        />
-                    </span>
-                    <span>
-                        <strong>Description:</strong>
-                        <p id="description-{{todo._id}}">{{ todo.description}}</p>
-                        <input id="description-{{todo._id}}-input" 
-                                class="todos-edit-input"
-                                [(ngModel)] ="descriptionEditInput"
-                                value="{{todo.description}}"
-                                (keydown.enter) = "submitEdit(todo)"
-                        />
-                    </span>
-                    <span>
-                        <strong>Date:</strong>
-                        <p id="date-{{todo._id}}">{{ todo.date}}</p>
-                        <input id="date-{{todo._id}}-input" 
-                                class="todos-edit-input"
-                                [(ngModel)] ="dateEditInput"
-                                value="{{ todo.date}}"
-                                (keydown.enter) = "submitEdit(todo)"
-                        />
-                    </span>
-                </div>
-                <div class="todos-buttons">
-                    <button 
-                        *ngIf="todo.list != dailyListId && todo.list != compeletedListId"
-                        class="edit-btn" 
-                        (click) ="moveToDailyList(todo)" 
-                        mat-icon-button
-                        matTooltip="Move task to daily list" matTooltipPosition = left>
-                        <mat-icon>transit_enterexit</mat-icon>
-                    </button>
-                    <button
-                        *ngIf="!todo.done" 
-                        class="done-btn" 
-                        (click) = "toggleDone(todo._id)"
-                        mat-icon-button
-                        matTooltip="Mark as done" matTooltipPosition = left>
-                        <mat-icon>done_all</mat-icon>
-                    </button>
-                    <button 
-                        *ngIf="!todo.done && !todoEditMode" 
-                        class="edit-btn" 
-                        mat-icon-button 
-                        (click) = "switchToEditMode(todo)"
-                        matTooltip="Edit task" matTooltipPosition = left>
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    <div *ngIf="todoEditMode" >
-                        <button 
-                            class="edit-btn" 
-                            mat-icon-button 
-                            (click) = "submitEdit(todo)"
-                            matTooltip="Submit Edit" matTooltipPosition = left>
-                            <mat-icon>done</mat-icon>
-                        </button>
-                        <button 
-                            class="edit-btn" 
-                            mat-icon-button 
-                            (click) = "cancleEdit(todo)"
-                            matTooltip="Cancel Edit" matTooltipPosition = left>
-                            <mat-icon>cancel</mat-icon>
-                        </button>
-                    </div>
-                    <button 
-                        class="remove-btn" 
-                        (click) = "deleteTodo(todo._id)" 
-                        mat-icon-button 
-                        color="warn"
-                        matTooltip="Delete task" matTooltipPosition = left>
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </div>
-            </div>
-        </mat-list-item>
-    </mat-list>
+<mat-list>
+	<mat-list-item *ngFor="let todo of todos; let count = index" class="mat-list-item">
+		<div class="todos-container">
+			<div id="todos-info-{{todo._id}}" class="todos-info" [ngClass]="todo.done ? 'todos-info-done' : ''">
+				<span>
+					<em class="todos-number">{{count + 1}}</em>
+					<strong >Title:</strong>
+					<p id="title-{{todo._id}}" >{{todo.title}}</p>
+					<input id="title-{{todo._id}}-input"
+					class="todos-edit-input"
+					value="{{todo.title}}"
+					[(ngModel)] ="titleEditInput"
+					(keydown.enter) = "submitEdit(todo)"
+					/>
+				</span>
+				<span>
+					<strong>Description:</strong>
+					<p id="description-{{todo._id}}">{{ todo.description}}</p>
+					<input id="description-{{todo._id}}-input" 
+					class="todos-edit-input"
+					[(ngModel)] ="descriptionEditInput"
+					value="{{todo.description}}"
+					(keydown.enter) = "submitEdit(todo)"
+					/>
+				</span>
+				<span>
+					<strong>Date:</strong>
+					<p id="date-{{todo._id}}">{{ todo.date}}</p>
+					<input id="date-{{todo._id}}-input" 
+					class="todos-edit-input"
+					[(ngModel)] ="dateEditInput"
+					value="{{ todo.date}}"
+					(keydown.enter) = "submitEdit(todo)"
+					/>
+				</span>
+			</div>
+			<div class="todos-buttons">
+				<button 
+				*ngIf="todo.list != dailyListId && todo.list != compeletedListId"
+				class="edit-btn" 
+				(click) ="moveToDailyList(todo)" 
+				mat-icon-button
+				matTooltip="Move task to daily list" matTooltipPosition = left>
+				<mat-icon>transit_enterexit</mat-icon>
+				</button>
+				<button
+				*ngIf="!todo.done" 
+				class="done-btn" 
+				(click) = "toggleDone(todo._id)"
+				mat-icon-button
+				matTooltip="Mark as done" matTooltipPosition = left>
+				<mat-icon>done_all</mat-icon>
+				</button>
+				<button 
+				*ngIf="!todo.done && !todoEditMode" 
+				class="edit-btn" 
+				mat-icon-button 
+				(click) = "switchToEditMode(todo)"
+				matTooltip="Edit task" matTooltipPosition = left>
+				<mat-icon>edit</mat-icon>
+				</button>
+				<div *ngIf="todoEditMode" >
+					<button 
+						class="edit-btn" 
+						mat-icon-button 
+						(click) = "submitEdit(todo)"
+						matTooltip="Submit Edit" matTooltipPosition = left>
+						<mat-icon>done</mat-icon>
+					</button>
+					<button 
+						class="edit-btn" 
+						mat-icon-button 
+						(click) = "cancleEdit(todo)"
+						matTooltip="Cancel Edit" matTooltipPosition = left>
+						<mat-icon>cancel</mat-icon>
+					</button>
+				</div>
+				<button 
+					class="remove-btn" 
+					(click) = "deleteTodo(todo._id)" 
+					mat-icon-button 
+					color="warn"
+					matTooltip="Delete task" matTooltipPosition = left>
+					<mat-icon>delete</mat-icon>
+				</button>
+			</div>
+		</div>
+	</mat-list-item>
+</mat-list>
