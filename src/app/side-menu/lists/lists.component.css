@@ -1,3 +1,4 @@
+
 .mat-list-item{
     border-bottom: 2px solid white;
     margin-bottom: 30px;
@@ -27,6 +28,9 @@
 .edit-btn{
     margin-left: 0px;
     color: wheat;
+}
+.edit-options-buttons{
+    display: flex;
 }
 .delete-btn{
     margin-left: 20px;

@@ -1,31 +1,47 @@
 <mat-list>
-   <mat-list-item *ngFor="let list of lists; let count = index;">
-    <a [routerLink]="['/list', list._id]"  (click)="openList(list)">
-        <p id="title-{{list._id}}">{{list.title}}</p>
-        <input  id="title-{{list._id}}-input"
-                class="list-edit-input"
-                [(ngModel)] =" NameEditInput"
-                value="{{list.title}}"
-                (keydown.enter) ="submitEdit(list._id)"
-        />
-    </a>
-        <span *ngIf="!list.isMain && list._id !=compeletedListId" class="buttons-section">
-            <button 
-                class="edit-btn" 
-                (click)="switchToEditMode(list._id)"
-                mat-icon-button
-                matTooltip="Edit list`s name" matTooltipPosition = left>
-                <mat-icon>edit</mat-icon>
-            </button>
-            <button 
-                class="delete-btn" 
-                (click)="deleteList(list._id)" 
-                mat-icon-button 
-                color="warn"
-                matTooltip="Delete list" matTooltipPosition = left>
-                <mat-icon>delete</mat-icon>
-            </button>
-        </span>
-    </mat-list-item>
+	<mat-list-item *ngFor="let list of lists; let count = index;">
+		<a [routerLink]="['/list', list._id]"  (click)="openList(list)">
+		<p id="title-{{list._id}}">{{list.title}}</p>
+		<input  id="title-{{list._id}}-input"
+		class="list-edit-input"
+		[(ngModel)] =" NameEditInput"
+		value="{{list.title}}"
+		(keydown.enter) ="submitEdit(list)"
+		/>
+		</a>
+		<span *ngIf="!list.isMain && list._id !=compeletedListId" class="buttons-section">
+			<button 
+			*ngIf="!ListEditMode"
+			class="edit-btn" 
+			(click)="switchToEditMode(list)"
+			mat-icon-button
+			matTooltip="Edit list`s name" matTooltipPosition = left>
+			<mat-icon>edit</mat-icon>
+			</button>
+			<div *ngIf="ListEditMode" class="edit-options-buttons">
+				<button 
+					class="edit-btn" 
+					mat-icon-button 
+					(click) = "submitEdit(list)"
+					matTooltip="Submit Edit" matTooltipPosition = left>
+					<mat-icon>done</mat-icon>
+				</button>
+				<button 
+					class="edit-btn" 
+					mat-icon-button 
+					(click) = "cancleEdit(list)"
+					matTooltip="Cancel Edit" matTooltipPosition = left>
+					<mat-icon>cancel</mat-icon>
+				</button>
+			</div>
+			<button 
+				class="delete-btn" 
+				(click)="deleteList(list._id)" 
+				mat-icon-button 
+				color="warn"
+				matTooltip="Delete list" matTooltipPosition = left>
+				<mat-icon>delete</mat-icon>
+			</button>
+		</span>
+	</mat-list-item>
 </mat-list>
-

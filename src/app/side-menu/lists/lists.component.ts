@@ -27,13 +27,22 @@ export class ListsComponent implements OnInit {
   deleteList(id) {
     this.apiService.deleteList(id);
   }
-  handleEdit(id) {
-    this.lists.map((list) => {
-      if (id === list._id) {
-        this.changeStyleOnEdit(id, list);
-        this.apiService.updateList(id, list);
-      }
-    });
+  
+  switchToEditMode(list) {
+    if (!this.ListEditMode) {
+      //edit only one item at the time
+      this.ListEditMode = true;
+      this.changeStyleOnEdit(list._id, list);
+    }
+  }
+  submitEdit(list) {
+    this.ListEditMode = false;
+    this.changeStyleOnEdit(list._id, list);
+    this.apiService.updateList(list._id, list);
+  }
+  cancleEdit(list){
+    this.ListEditMode = false;
+    this.changeStyleOnEdit(list._id, list);
   }
 
   changeStyleOnEdit(id, list) {
@@ -52,17 +61,6 @@ export class ListsComponent implements OnInit {
       list.title = this.NameEditInput; //to show updated value in list before refresh
       this.NameEditInput = '';
     }
-  }
-  switchToEditMode(id) {
-    if (!this.ListEditMode) {
-      //edit only one item at the time
-      this.ListEditMode = true;
-      this.handleEdit(id);
-    }
-  }
-  submitEdit(id) {
-    this.ListEditMode = false;
-    this.handleEdit(id);
   }
   openList(list) {
     this.service.nextListInfo(list);
