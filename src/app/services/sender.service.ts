@@ -12,6 +12,7 @@ export class SenderService {
   constructor(private route: ActivatedRoute) {}
 
   CompeletedListID = '8ed2864ab14f980a6b47bbb9';
+
   defaultList = [
     {
       _id: this.CompeletedListID,
@@ -20,6 +21,7 @@ export class SenderService {
       isMain: false,
     },
   ];
+
   private DailyListID = new BehaviorSubject(null);
   SharedDailyListID = this.DailyListID.asObservable();
 
