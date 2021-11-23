@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 import { SenderService } from '../services/sender.service';
 import { TasksDataService } from '../services/tasks-data.service';
 
@@ -13,7 +12,6 @@ export class SideMenuComponent implements OnInit {
   inputListName: string;
   allLists: [];
   listData: {};
-  input = new FormControl('', [Validators.required]);
 
   constructor(
     private service: SenderService,
@@ -22,10 +20,6 @@ export class SideMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService.getAllLists();
-  }
-
-  getErrorMessage() {
-    return this.input.hasError('required') ? 'You must enter a value' : '';
   }
 
   addList() {
