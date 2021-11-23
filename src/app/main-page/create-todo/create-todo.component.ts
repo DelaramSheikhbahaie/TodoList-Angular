@@ -9,7 +9,6 @@ import { SenderService } from '../../services/sender.service';
   templateUrl: './create-todo.component.html',
   styleUrls: ['./create-todo.component.css'],
 })
-
 export class CreateTodoComponent implements OnInit {
   contentInput: string;
   dateInput: string;
@@ -42,22 +41,18 @@ export class CreateTodoComponent implements OnInit {
   getErrorMessage() {
     return this.input.hasError('required') ? 'You must enter a value' : '';
   }
-  
+
   addTodo() {
     if (
       this.contentInput !== '' &&
       this.dateInput !== '' &&
       this.descriptionInput !== ''
     ) {
-      this.listName == 'Daily Tasks'
-        ? (this.isDaily = true)
-        : (this.isDaily = false);
       this.taskData = {
         title: this.contentInput,
         date: this.dateInput,
         description: this.descriptionInput,
         done: false,
-        isDaily: this.isDaily,
         list: this.listId,
       };
       this.apiService.insertTask(this.taskData);
