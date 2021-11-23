@@ -80,16 +80,27 @@ export class TodosComponent implements OnInit {
     this.openSnackBar('Task Deleted', 'Dismiss');
   }
 
-  handleEdit(id: Schema.Types.ObjectId) {
-    this.todos.map((todo) => {
-      if (id === todo._id) {
-        this.changeStyleOnEdit(id, todo);
-        this.apiService.updateTodos(id, todo);
-      }
-    });
+  switchToEditMode(todo) {
+    if (!this.todoEditMode) {
+      //edit only one item at the time
+      this.todoEditMode = true;
+      this.changeStyleOnEdit(todo._id, todo);
+    }
+  }
+  
+  cancleEdit(todo){
+    this.todoEditMode = false;
+    this.changeStyleOnEdit(todo._id, todo);
+  }
+
+  submitEdit(todo) {
+    this.todoEditMode = false;
+    this.changeStyleOnEdit(todo._id, todo);
+    this.apiService.updateTodos(todo ,this.listID);
   }
 
   changeStyleOnEdit(id: Schema.Types.ObjectId, todo) {
+    
     this.ItemTitle = document.getElementById(`title-${id}`) as HTMLElement;
     this.ItemTitleInput = document.getElementById(
       `title-${id}-input`
@@ -136,19 +147,6 @@ export class TodosComponent implements OnInit {
       todo.date = this.dateEditInput;
       this.dateEditInput = '';
     }
-  }
-
-  switchToEditMode(id: Schema.Types.ObjectId) {
-    if (!this.todoEditMode) {
-      //edit only one item at the time
-      this.todoEditMode = true;
-      this.handleEdit(id);
-    }
-  }
-
-  submitEdit(id: Schema.Types.ObjectId) {
-    this.todoEditMode = false;
-    this.handleEdit(id);
   }
   
   moveToDailyList(todo) {

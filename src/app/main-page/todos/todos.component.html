@@ -11,7 +11,7 @@
                                 class="todos-edit-input"
                                 value="{{todo.title}}"
                                 [(ngModel)] ="titleEditInput"
-                                (keydown.enter) = "submitEdit(todo._id)"
+                                (keydown.enter) = "submitEdit(todo)"
                         />
                     </span>
                     <span>
@@ -21,7 +21,7 @@
                                 class="todos-edit-input"
                                 [(ngModel)] ="descriptionEditInput"
                                 value="{{todo.description}}"
-                                (keydown.enter) = "submitEdit(todo._id)"
+                                (keydown.enter) = "submitEdit(todo)"
                         />
                     </span>
                     <span>
@@ -31,7 +31,7 @@
                                 class="todos-edit-input"
                                 [(ngModel)] ="dateEditInput"
                                 value="{{ todo.date}}"
-                                (keydown.enter) = "submitEdit(todo._id)"
+                                (keydown.enter) = "submitEdit(todo)"
                         />
                     </span>
                 </div>
@@ -53,27 +53,27 @@
                         <mat-icon>done_all</mat-icon>
                     </button>
                     <button 
-                        *ngIf="!todo.done" 
+                        *ngIf="!todo.done && !todoEditMode" 
                         class="edit-btn" 
                         mat-icon-button 
-                        (click) = "switchToEditMode(todo._id)"
+                        (click) = "switchToEditMode(todo)"
                         matTooltip="Edit task" matTooltipPosition = left>
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <div *ngIf="" >
+                    <div *ngIf="todoEditMode" >
                         <button 
                             class="edit-btn" 
                             mat-icon-button 
-                            (click) = "switchToEditMode(todo._id)"
-                            matTooltip="Edit task" matTooltipPosition = left>
-                            <mat-icon>edit</mat-icon>
+                            (click) = "submitEdit(todo)"
+                            matTooltip="Submit Edit" matTooltipPosition = left>
+                            <mat-icon>done</mat-icon>
                         </button>
                         <button 
                             class="edit-btn" 
                             mat-icon-button 
-                            (click) = "switchToEditMode(todo._id)"
-                            matTooltip="Edit task" matTooltipPosition = left>
-                            <mat-icon>edit</mat-icon>
+                            (click) = "cancleEdit(todo)"
+                            matTooltip="Cancel Edit" matTooltipPosition = left>
+                            <mat-icon>cancel</mat-icon>
                         </button>
                     </div>
                     <button 
