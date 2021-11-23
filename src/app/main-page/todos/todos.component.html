@@ -60,24 +60,22 @@
                         matTooltip="Edit task" matTooltipPosition = left>
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <!-- <div>
+                    <div *ngIf="" >
                         <button 
-                        *ngIf="!todo.done" 
-                        class="edit-btn" 
-                        mat-icon-button 
-                        (click) = "switchToEditMode(todo._id)"
-                        matTooltip="Edit task" matTooltipPosition = left>
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    <button 
-                        *ngIf="!todo.done" 
-                        class="edit-btn" 
-                        mat-icon-button 
-                        (click) = "switchToEditMode(todo._id)"
-                        matTooltip="Edit task" matTooltipPosition = left>
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    </div> -->
+                            class="edit-btn" 
+                            mat-icon-button 
+                            (click) = "switchToEditMode(todo._id)"
+                            matTooltip="Edit task" matTooltipPosition = left>
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button 
+                            class="edit-btn" 
+                            mat-icon-button 
+                            (click) = "switchToEditMode(todo._id)"
+                            matTooltip="Edit task" matTooltipPosition = left>
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </div>
                     <button 
                         class="remove-btn" 
                         (click) = "deleteTodo(todo._id)" 

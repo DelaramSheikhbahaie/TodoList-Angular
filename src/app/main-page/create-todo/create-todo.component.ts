@@ -54,7 +54,7 @@ export class CreateTodoComponent implements OnInit {
         isDaily: this.isDaily,
         list: this.listId,
       };
-      this.apiService.insertTask(this.taskData, this.listId);
+      this.apiService.insertTask(this.taskData);
       this.contentInput = '';
       this.dateInput = '';
       this.descriptionInput = '';

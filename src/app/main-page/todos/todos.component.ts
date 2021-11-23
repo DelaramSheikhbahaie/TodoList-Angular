@@ -64,7 +64,7 @@ export class TodosComponent implements OnInit {
         this.todosInfo = document.getElementById(
           `todos-info-${id}`
         ) as HTMLElement;
-        this.apiService.updateTodos(id, todo);
+        this.apiService.updateTodos(todo , this.listID);
         if (todo.done)
           this.openSnackBar('Moved to Compeleted Tasks list', 'Dismiss');
       }

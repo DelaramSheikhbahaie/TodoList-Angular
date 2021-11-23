@@ -11,21 +11,22 @@ export class TasksDataService {
   todos: any;
 
   constructor(private http: HttpClient, private senderService: SenderService) {}
-  insertTask(taskData: object, id) {
+
+  insertTask(taskData) {
     this.http.post(this.baseUrl + 'api/tasks', taskData).subscribe({
-      next: (response) => this.findTaskByListId(id),
+      next: (response) => this.findTaskByListId(taskData.list),
       error: (err) => console.log(err),
     });
   }
 
-  updateTodos(id, taskData: object) {
-    this.http.put(this.baseUrl + `api/tasks/${id}`, taskData).subscribe({
-      next: (response) => this.findTaskByListId(id),
+  updateTodos(taskData, listId) {
+    this.http.put(this.baseUrl + `api/tasks/${taskData._id}`, taskData).subscribe({
+      next: (response) => this.findTaskByListId(listId),
       error: (err) => console.log(err),
     });
   }
 
-  deleteTodos(id: Schema.Types.ObjectId , listId) {
+  deleteTodos(id: Schema.Types.ObjectId, listId) {
     this.http.delete(this.baseUrl + `api/tasks/${id}`).subscribe({
       next: (response) => this.findTaskByListId(listId),
       error: (err) => console.log(err),
