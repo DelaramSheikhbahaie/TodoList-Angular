@@ -25,9 +25,9 @@ export class TasksDataService {
     });
   }
 
-  deleteTodos(id: Schema.Types.ObjectId) {
+  deleteTodos(id: Schema.Types.ObjectId , listId) {
     this.http.delete(this.baseUrl + `api/tasks/${id}`).subscribe({
-      next: (response) => console.log(response),
+      next: (response) => this.findTaskByListId(listId),
       error: (err) => console.log(err),
     });
   }
