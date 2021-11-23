@@ -20,7 +20,7 @@ export class TasksDataService {
 
   updateTodos(id, taskData: object) {
     this.http.put(this.baseUrl + `api/tasks/${id}`, taskData).subscribe({
-      next: (response) => console.log(response),
+      next: (response) => this.findTaskByListId(id),
       error: (err) => console.log(err),
     });
   }

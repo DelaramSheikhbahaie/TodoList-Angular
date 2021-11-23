@@ -44,7 +44,8 @@
                         matTooltip="Move task to daily list" matTooltipPosition = left>
                         <mat-icon>transit_enterexit</mat-icon>
                     </button>
-                    <button 
+                    <button
+                        *ngIf="!todo.done" 
                         class="done-btn" 
                         (click) = "toggleDone(todo._id)"
                         mat-icon-button
@@ -59,6 +60,24 @@
                         matTooltip="Edit task" matTooltipPosition = left>
                         <mat-icon>edit</mat-icon>
                     </button>
+                    <!-- <div>
+                        <button 
+                        *ngIf="!todo.done" 
+                        class="edit-btn" 
+                        mat-icon-button 
+                        (click) = "switchToEditMode(todo._id)"
+                        matTooltip="Edit task" matTooltipPosition = left>
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button 
+                        *ngIf="!todo.done" 
+                        class="edit-btn" 
+                        mat-icon-button 
+                        (click) = "switchToEditMode(todo._id)"
+                        matTooltip="Edit task" matTooltipPosition = left>
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    </div> -->
                     <button 
                         class="remove-btn" 
                         (click) = "deleteTodo(todo._id)" 
