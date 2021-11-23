@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Todo } from 'src/app/models/todos';
 import { TasksDataService } from 'src/app/services/tasks-data.service';
@@ -17,6 +18,7 @@ export class CreateTodoComponent implements OnInit {
   listId;
   listName: string;
   taskData: object;
+  input = new FormControl('', [Validators.required]);
 
   constructor(
     private service: SenderService,
@@ -36,7 +38,9 @@ export class CreateTodoComponent implements OnInit {
     this.route.paramMap.subscribe((params) => (this.listID = params.get('id')));
     this.service.sharedListName.subscribe((name) => (this.listName = name));
   }
-
+  getErrorMessage(){
+    return this.input.hasError('required') ? 'You must enter a value' :''
+  }
   addTodo() {
     if (
       this.contentInput !== '' &&
