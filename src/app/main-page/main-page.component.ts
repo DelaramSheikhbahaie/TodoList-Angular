@@ -23,7 +23,6 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     this.compeletedListId = this.service.CompeletedListID;
     this.route.paramMap.subscribe((params) => (this.listId = params.get('id')));
-    // this.service.sharedListID.subscribe(id => this.listId = id)
     this.service.sharedListName.subscribe((name) => (this.listName = name));
     this.apiService.findList(this.listId);
   }

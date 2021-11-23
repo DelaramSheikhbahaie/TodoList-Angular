@@ -33,7 +33,6 @@ export class CreateTodoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.service.sharedListID.subscribe(id => this.listId =id)
     this.route.paramMap.subscribe((params) => (this.listID = params.get('id')));
     this.service.sharedListName.subscribe((name) => (this.listName = name));
   }

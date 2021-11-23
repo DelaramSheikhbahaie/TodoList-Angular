@@ -31,19 +31,13 @@ export class SenderService {
   private lists = new BehaviorSubject([]);
   sharedLists = this.lists.asObservable();
 
-  private listID = new BehaviorSubject(0);
-  sharedListID = this.listID.asObservable();
-
-  private listName = new BehaviorSubject('Daily Tasks');
+  private listName = new BehaviorSubject('');
   sharedListName = this.listName.asObservable();
 
   private TodoList = new BehaviorSubject([]);
   sharedTodoList = this.TodoList.asObservable();
 
   nextListInfo(item: any) {
-    var id: any;
-    this.route.paramMap.subscribe((params) => (id = params.get('id')));
-    this.listID.next(id);
     this.listName.next(item.title);
   }
 
