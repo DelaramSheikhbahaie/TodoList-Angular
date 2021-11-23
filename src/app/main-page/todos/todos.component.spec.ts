@@ -22,4 +22,9 @@ describe('TodosComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('input id', () => {
+    const data = fixture.nativeElement;
+    expect(data.querySelector('.todos-edit-input').id).toContain('input');
+  });
 });

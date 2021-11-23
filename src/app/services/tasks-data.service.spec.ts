@@ -13,4 +13,9 @@ describe('TasksDataService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('base url', () => {
+    expect(service.baseUrl).toBe('http://localhost:3000/');
+  });
+
 });
