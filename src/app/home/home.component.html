@@ -1,10 +1,10 @@
 <mat-sidenav-container>
-    <mat-sidenav #sidenav [(opened)] = "opened" mode="over">
-      <app-side-menu></app-side-menu>
-      <button mat-raised-button class="side-toggle-button" (click)="sidenav.toggle()">Hide Lists</button>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <button mat-stroked-button class="main-toggle-button" (click)="sidenav.toggle()">Show Other Lists</button>
-      <app-main-page></app-main-page>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+	<mat-sidenav #sidenav [(opened)] = "opened" mode="over">
+    <app-side-menu></app-side-menu>
+    <button mat-raised-button class="side-toggle-button" (click)="sidenav.toggle()">Hide Lists</button>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<button mat-stroked-button class="main-toggle-button" (click)="sidenav.toggle()">Show Other Lists</button>
+		<app-main-page></app-main-page>
+	</mat-sidenav-content>
+</mat-sidenav-container>
