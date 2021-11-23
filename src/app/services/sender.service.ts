@@ -11,15 +11,8 @@ import { Todo } from '../models/todos';
 export class SenderService {
   constructor(private route: ActivatedRoute) {}
 
-  DailyListID = '7f57bd2bc9259e055c44be9a';
   CompeletedListID = '8ed2864ab14f980a6b47bbb9';
   defaultList = [
-    {
-      _id: this.DailyListID,
-      title: 'Daily Tasks',
-      date: Date.now(),
-      isMain: true,
-    },
     {
       _id: this.CompeletedListID,
       title: 'Compeleted Tasks',
@@ -27,6 +20,8 @@ export class SenderService {
       isMain: false,
     },
   ];
+  private DailyListID = new BehaviorSubject(null);
+  SharedDailyListID = this.DailyListID.asObservable();
 
   private lists = new BehaviorSubject([]);
   sharedLists = this.lists.asObservable();
@@ -48,5 +43,9 @@ export class SenderService {
 
   updateTodoList(todoList: any) {
     this.TodoList.next(todoList);
+  }
+
+  setDailyListId(list){
+    this.DailyListID.next(list._id)
   }
 }

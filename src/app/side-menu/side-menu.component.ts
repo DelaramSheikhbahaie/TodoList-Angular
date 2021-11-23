@@ -19,7 +19,8 @@ export class SideMenuComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.apiService.getAllLists();
+    this.apiService.mainList();
+    // this.apiService.getAllLists();
   }
 
   addList() {

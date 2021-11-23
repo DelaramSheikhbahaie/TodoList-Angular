@@ -87,4 +87,10 @@ export class TasksDataService {
       error: (err) => console.log(err),
     });
   }
+  mainList() {
+    this.http.get(this.baseUrl + `api/mainList`).subscribe({
+      next: (response) => {this.getAllLists(); this.senderService.setDailyListId(response)},
+      error: (err) => console.log(err),
+    });
+  }
 }
