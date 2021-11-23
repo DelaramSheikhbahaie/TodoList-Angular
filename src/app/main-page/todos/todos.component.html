@@ -25,7 +25,7 @@
 				</span>
 				<span>
 					<strong>Date:</strong>
-					<p id="date-{{todo._id}}">{{ todo.date}}</p>
+					<p id="date-{{todo._id}}">{{todo.date.slice(0,10)}}</p>
 					<input id="date-{{todo._id}}-input" 
 					class="todos-edit-input"
 					[(ngModel)] ="dateEditInput"
