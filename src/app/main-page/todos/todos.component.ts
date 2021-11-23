@@ -151,7 +151,7 @@ export class TodosComponent implements OnInit {
   
   moveToDailyList(todo) {
     todo.list = this.dailyListId;
-    this.apiService.updateTodos(todo._id, todo);
+    this.apiService.updateTodos(todo, this.listID);
     this.openSnackBar('Moved to Daily Tasks list', 'Dismiss');
   }
 }
