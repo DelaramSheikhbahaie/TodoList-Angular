@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 var mainListId = '619bcdef2888490b5867bcbe';
 const routes: Routes = [
   { path: '', redirectTo: `/list/${mainListId}`, pathMatch: 'full' },
-  { path: '**', redirectTo: `/list/${mainListId}`, pathMatch: 'full' },
+  // { path: '**', redirectTo: `/list/${mainListId}`, pathMatch: 'full' },
   { path: 'list/:id', component: HomeComponent },
 ];
 
