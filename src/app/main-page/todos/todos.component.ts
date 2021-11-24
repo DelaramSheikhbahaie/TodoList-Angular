@@ -49,7 +49,6 @@ export class TodosComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.SharedDailyListID.subscribe((id) => (this.dailyListId = id));
-    console.log(this.dailyListId);
     this.compeletedListId = this.service.CompeletedListID;
     this.route.paramMap.subscribe((params) => (this.listID = params.get('id')));
     this.service.sharedTodoList.subscribe(

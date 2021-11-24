@@ -39,7 +39,6 @@ export class TasksDataService {
     this.http.get(this.baseUrl + `api/tasks/query/${id}`).subscribe({
       next: (response) => {
         this.senderService.updateTodoList(response);
-        console.log(response);
       },
       error: (err) => console.log(err),
     });
@@ -92,8 +91,8 @@ export class TasksDataService {
   mainList() {
     this.http.get(this.baseUrl + `api/mainList`).subscribe({
       next: (response) => {
-        this.getAllLists();
         this.senderService.setDailyListId(response);
+        this.getAllLists();
       },
       error: (err) => console.log(err),
     });
