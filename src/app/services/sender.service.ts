@@ -46,7 +46,6 @@ export class SenderService {
 
   setDailyListId(list) {
     this.DailyListID.next(list._id);
-    this.nextListInfo(list);
     this.route.navigate([`/list/${list._id}`]);
   }
 }
