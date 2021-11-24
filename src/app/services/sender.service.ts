@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Schema } from 'inspector';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { List } from '../models/lists';
-import { Todo } from '../models/todos';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SenderService {
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: Router) {}
 
   CompeletedListID = '8ed2864ab14f980a6b47bbb9';
 
@@ -49,5 +46,7 @@ export class SenderService {
 
   setDailyListId(list) {
     this.DailyListID.next(list._id);
+    this.nextListInfo(list);
+    this.route.navigate([`/list/${list._id}`]);
   }
 }
